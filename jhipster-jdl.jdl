@@ -1,0 +1,128 @@
+entity SellerPlan {
+  name String required
+  products Long
+  services Long
+  monthlyPrice Double
+  annualPrice Double
+  discount Long
+  
+  createdDate Instant
+  lastModifiedDate Instant
+  createdBy String
+  lastModifiedBy String
+  isDeleted Boolean
+}
+
+enum RoomStatus {
+	INACTIVE, VERIFIED
+}
+
+entity Room {
+  name String required
+  logoImageUrl String
+  pincode Long
+  latitude String
+  longitude String
+  planExpiryDate Instant
+  status RoomStatus
+  websiteLink String
+  
+  createdDate Instant
+  lastModifiedDate Instant
+  createdBy String
+  lastModifiedBy String
+  isDeleted Boolean
+}
+
+entity Contact {
+  firstPersonName String
+  imageUrl String
+  whatsappNumber String
+  landlineNumber String
+  email String 
+  addressLine1 String
+  addressLine2 String
+  pincode Long
+  latitude String
+  longitude String
+  
+  createdDate Instant
+  lastModifiedDate Instant
+  createdBy String
+  lastModifiedBy String
+  isDeleted Boolean
+}
+
+entity Category {
+  name String
+  imageUrl String
+  iconUrl String
+  isApproved Boolean
+  
+  createdDate Instant
+  lastModifiedDate Instant
+  createdBy String
+  lastModifiedBy String
+  isDeleted Boolean
+}
+
+entity Product{
+  name String required
+  code String
+  filePath String required
+  fileType String 
+  shortDescription String
+  description String
+  externalLink String
+  
+  createdDate Instant
+  lastModifiedDate Instant
+  createdBy String
+  lastModifiedBy String
+  isDeleted Boolean
+}
+
+entity Service {
+  name String required
+  code String
+  imageUrl String
+  shortDescription String
+  description String
+  externalLink String
+  
+  createdDate Instant
+  lastModifiedDate Instant
+  createdBy String
+  lastModifiedBy String
+  isDeleted Boolean
+}
+
+entity UserVisit {
+  startDate Instant
+  endDate Instant
+
+  createdDate Instant
+  lastModifiedDate Instant
+  createdBy String
+  lastModifiedBy String
+  isDeleted Boolean
+}
+
+relationship OneToMany {
+	Category{subCategory} to Category{category},
+    Category{product} to Product{category required},
+    Category{service} to Service{category required},
+    Room{Product} to Product{room required},
+    Room{Service} to Service{room required},
+    Room{UserVisit} to UserVisit{room}
+}
+relationship ManyToOne {
+	Room{sellerPlan} to SellerPlan
+} 
+relationship OneToOne {
+	Room{contact} to Contact{room}
+}
+
+paginate Product, Service, Category with infinite-scroll
+
+paginate UserVisit with pagination
