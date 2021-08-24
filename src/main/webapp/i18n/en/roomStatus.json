@@ -1,0 +1,9 @@
+{
+  "busifrogApp": {
+    "RoomStatus": {
+      "null": "",
+      "INACTIVE": "INACTIVE",
+      "VERIFIED": "VERIFIED"
+    }
+  }
+}

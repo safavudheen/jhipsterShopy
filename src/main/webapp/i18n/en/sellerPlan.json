@@ -1,0 +1,34 @@
+{
+  "busifrogApp": {
+    "sellerPlan": {
+      "home": {
+        "title": "Seller Plans",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Seller Plan",
+        "createOrEditLabel": "Create or edit a Seller Plan",
+        "notFound": "No Seller Plans found"
+      },
+      "created": "A new Seller Plan is created with identifier {{ param }}",
+      "updated": "A Seller Plan is updated with identifier {{ param }}",
+      "deleted": "A Seller Plan is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Seller Plan {{ id }}?"
+      },
+      "detail": {
+        "title": "Seller Plan"
+      },
+      "id": "ID",
+      "name": "Name",
+      "products": "Products",
+      "services": "Services",
+      "monthlyPrice": "Monthly Price",
+      "annualPrice": "Annual Price",
+      "discount": "Discount",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date",
+      "createdBy": "Created By",
+      "lastModifiedBy": "Last Modified By",
+      "isDeleted": "Is Deleted"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "busifrogApp": {
+    "product": {
+      "home": {
+        "title": "Products",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "नया Product बनाएँ",
+        "createOrEditLabel": "Product बनाएँ या संपादित करें",
+        "notFound": "No Products found"
+      },
+      "created": "एक नया Product [identifier: {{ param }}] तैयार है",
+      "updated": "एक Product [identifier: {{ param }}] का अद्यतन हुआ है",
+      "deleted": "Product [identifier: {{ param }}] हटा दिया है",
+      "delete": {
+        "question": "Product [id: {{ id }}] हटाने की पुष्टि करें"
+      },
+      "detail": {
+        "title": "Product"
+      },
+      "id": "ID",
+      "name": "Name",
+      "code": "Code",
+      "filePath": "File Path",
+      "fileType": "File Type",
+      "shortDescription": "Short Description",
+      "description": "Description",
+      "externalLink": "External Link",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date",
+      "createdBy": "Created By",
+      "lastModifiedBy": "Last Modified By",
+      "isDeleted": "Is Deleted",
+      "category": "Category",
+      "room": "Room"
+    }
+  }
+}

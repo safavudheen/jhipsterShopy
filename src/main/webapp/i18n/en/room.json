@@ -1,0 +1,41 @@
+{
+  "busifrogApp": {
+    "room": {
+      "home": {
+        "title": "Rooms",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Room",
+        "createOrEditLabel": "Create or edit a Room",
+        "notFound": "No Rooms found"
+      },
+      "created": "A new Room is created with identifier {{ param }}",
+      "updated": "A Room is updated with identifier {{ param }}",
+      "deleted": "A Room is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Room {{ id }}?"
+      },
+      "detail": {
+        "title": "Room"
+      },
+      "id": "ID",
+      "name": "Name",
+      "logoImageUrl": "Logo Image Url",
+      "pincode": "Pincode",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "planExpiryDate": "Plan Expiry Date",
+      "status": "Status",
+      "websiteLink": "Website Link",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date",
+      "createdBy": "Created By",
+      "lastModifiedBy": "Last Modified By",
+      "isDeleted": "Is Deleted",
+      "contact": "Contact",
+      "product": "Product",
+      "service": "Service",
+      "userVisit": "User Visit",
+      "sellerPlan": "Seller Plan"
+    }
+  }
+}

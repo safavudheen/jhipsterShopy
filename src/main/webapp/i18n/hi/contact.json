@@ -1,0 +1,39 @@
+{
+  "busifrogApp": {
+    "contact": {
+      "home": {
+        "title": "Contacts",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "नया Contact बनाएँ",
+        "createOrEditLabel": "Contact बनाएँ या संपादित करें",
+        "notFound": "No Contacts found"
+      },
+      "created": "एक नया Contact [identifier: {{ param }}] तैयार है",
+      "updated": "एक Contact [identifier: {{ param }}] का अद्यतन हुआ है",
+      "deleted": "Contact [identifier: {{ param }}] हटा दिया है",
+      "delete": {
+        "question": "Contact [id: {{ id }}] हटाने की पुष्टि करें"
+      },
+      "detail": {
+        "title": "Contact"
+      },
+      "id": "ID",
+      "firstPersonName": "First Person Name",
+      "imageUrl": "Image Url",
+      "whatsappNumber": "Whatsapp Number",
+      "landlineNumber": "Landline Number",
+      "email": "Email",
+      "addressLine1": "Address Line 1",
+      "addressLine2": "Address Line 2",
+      "pincode": "Pincode",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date",
+      "createdBy": "Created By",
+      "lastModifiedBy": "Last Modified By",
+      "isDeleted": "Is Deleted",
+      "room": "Room"
+    }
+  }
+}

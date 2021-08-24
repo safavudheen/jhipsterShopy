@@ -11,6 +11,20 @@ import activate, { ActivateState } from 'app/modules/account/activate/activate.r
 import password, { PasswordState } from 'app/modules/account/password/password.reducer';
 import settings, { SettingsState } from 'app/modules/account/settings/settings.reducer';
 import passwordReset, { PasswordResetState } from 'app/modules/account/password-reset/password-reset.reducer';
+// prettier-ignore
+import sellerPlan from 'app/entities/seller-plan/seller-plan.reducer';
+// prettier-ignore
+import room from 'app/entities/room/room.reducer';
+// prettier-ignore
+import contact from 'app/entities/contact/contact.reducer';
+// prettier-ignore
+import category from 'app/entities/category/category.reducer';
+// prettier-ignore
+import product from 'app/entities/product/product.reducer';
+// prettier-ignore
+import service from 'app/entities/service/service.reducer';
+// prettier-ignore
+import userVisit from 'app/entities/user-visit/user-visit.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 const rootReducer = {
@@ -24,6 +38,13 @@ const rootReducer = {
   passwordReset,
   password,
   settings,
+  sellerPlan,
+  room,
+  contact,
+  category,
+  product,
+  service,
+  userVisit,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar,
 };

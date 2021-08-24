@@ -1,0 +1,102 @@
+{
+  "name": "Room",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "logoImageUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pincode",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "latitude",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "longitude",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "planExpiryDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "RoomStatus",
+      "fieldValues": "INACTIVE,VERIFIED"
+    },
+    {
+      "fieldName": "websiteLink",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isDeleted",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "contact",
+      "otherEntityRelationshipName": "room",
+      "relationshipName": "contact",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "room",
+      "relationshipName": "product"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "service",
+      "otherEntityRelationshipName": "room",
+      "relationshipName": "service"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "userVisit",
+      "otherEntityRelationshipName": "room",
+      "relationshipName": "userVisit"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sellerPlan",
+      "otherEntityRelationshipName": "room",
+      "relationshipName": "sellerPlan"
+    }
+  ],
+  "entityTableName": "room",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210824073636"
+}

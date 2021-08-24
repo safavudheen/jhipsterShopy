@@ -1,0 +1,41 @@
+{
+  "busifrogApp": {
+    "room": {
+      "home": {
+        "title": "Rooms",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "नया Room बनाएँ",
+        "createOrEditLabel": "Room बनाएँ या संपादित करें",
+        "notFound": "No Rooms found"
+      },
+      "created": "एक नया Room [identifier: {{ param }}] तैयार है",
+      "updated": "एक Room [identifier: {{ param }}] का अद्यतन हुआ है",
+      "deleted": "Room [identifier: {{ param }}] हटा दिया है",
+      "delete": {
+        "question": "Room [id: {{ id }}] हटाने की पुष्टि करें"
+      },
+      "detail": {
+        "title": "Room"
+      },
+      "id": "ID",
+      "name": "Name",
+      "logoImageUrl": "Logo Image Url",
+      "pincode": "Pincode",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "planExpiryDate": "Plan Expiry Date",
+      "status": "Status",
+      "websiteLink": "Website Link",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date",
+      "createdBy": "Created By",
+      "lastModifiedBy": "Last Modified By",
+      "isDeleted": "Is Deleted",
+      "contact": "Contact",
+      "product": "Product",
+      "service": "Service",
+      "userVisit": "User Visit",
+      "sellerPlan": "Seller Plan"
+    }
+  }
+}

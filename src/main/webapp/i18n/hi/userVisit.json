@@ -1,0 +1,31 @@
+{
+  "busifrogApp": {
+    "userVisit": {
+      "home": {
+        "title": "UserVisits",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "नया User Visit बनाएँ",
+        "createOrEditLabel": "User Visit बनाएँ या संपादित करें",
+        "notFound": "No User Visits found"
+      },
+      "created": "एक नया User Visit [identifier: {{ param }}] तैयार है",
+      "updated": "एक User Visit [identifier: {{ param }}] का अद्यतन हुआ है",
+      "deleted": "User Visit [identifier: {{ param }}] हटा दिया है",
+      "delete": {
+        "question": "User Visit [id: {{ id }}] हटाने की पुष्टि करें"
+      },
+      "detail": {
+        "title": "User Visit"
+      },
+      "id": "ID",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date",
+      "createdBy": "Created By",
+      "lastModifiedBy": "Last Modified By",
+      "isDeleted": "Is Deleted",
+      "room": "Room"
+    }
+  }
+}

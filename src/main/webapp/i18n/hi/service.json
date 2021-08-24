@@ -1,0 +1,36 @@
+{
+  "busifrogApp": {
+    "service": {
+      "home": {
+        "title": "Services",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "नया Service बनाएँ",
+        "createOrEditLabel": "Service बनाएँ या संपादित करें",
+        "notFound": "No Services found"
+      },
+      "created": "एक नया Service [identifier: {{ param }}] तैयार है",
+      "updated": "एक Service [identifier: {{ param }}] का अद्यतन हुआ है",
+      "deleted": "Service [identifier: {{ param }}] हटा दिया है",
+      "delete": {
+        "question": "Service [id: {{ id }}] हटाने की पुष्टि करें"
+      },
+      "detail": {
+        "title": "Service"
+      },
+      "id": "ID",
+      "name": "Name",
+      "code": "Code",
+      "imageUrl": "Image Url",
+      "shortDescription": "Short Description",
+      "description": "Description",
+      "externalLink": "External Link",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date",
+      "createdBy": "Created By",
+      "lastModifiedBy": "Last Modified By",
+      "isDeleted": "Is Deleted",
+      "category": "Category",
+      "room": "Room"
+    }
+  }
+}
