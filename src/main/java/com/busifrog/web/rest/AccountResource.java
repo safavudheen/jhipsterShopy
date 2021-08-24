@@ -62,7 +62,17 @@ public class AccountResource {
         if (isPasswordLengthInvalid(managedUserVM.getPassword())) {
             throw new InvalidPasswordException();
         }
-        User user = userService.registerUser(managedUserVM, managedUserVM.getPassword());
+        User user = userService.registerUser(managedUserVM, managedUserVM.getPassword(), false);
+        mailService.sendActivationEmail(user);
+    }
+
+    @PostMapping("/register-owner")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void registerOwnerAccount(@Valid @RequestBody ManagedUserVM managedUserVM) {
+        if (isPasswordLengthInvalid(managedUserVM.getPassword())) {
+            throw new InvalidPasswordException();
+        }
+        User user = userService.registerUser(managedUserVM, managedUserVM.getPassword(), true);
         mailService.sendActivationEmail(user);
     }
 
