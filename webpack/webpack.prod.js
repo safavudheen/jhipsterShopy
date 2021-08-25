@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge').merge;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const WorkboxPlugin = require('workbox-webpack-plugin');
+// const WorkboxPlugin = require('workbox-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const sass = require('sass');
@@ -92,10 +92,10 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
       minimize: true,
       debug: false,
     }),
-    new WorkboxPlugin.GenerateSW({
-      clientsClaim: true,
-      skipWaiting: true,
-      exclude: [/swagger-ui/],
-    }),
+    // new WorkboxPlugin.GenerateSW({
+    //   clientsClaim: true,
+    //   skipWaiting: true,
+    //   exclude: [/swagger-ui/],
+    // }),
   ],
 });

@@ -44,6 +44,9 @@
     "clientPackageManager": "npm",
     "languages": ["en", "hi"],
     "entities": ["SellerPlan", "Room", "Contact", "Category", "Product", "Service", "UserVisit"],
-    "lastLiquibaseTimestamp": 1629790601000
+    "lastLiquibaseTimestamp": 1629790601000,
+    "herokuAppName": "busifrog",
+    "herokuDeployType": "jar",
+    "herokuJavaVersion": "11"
   }
 }
