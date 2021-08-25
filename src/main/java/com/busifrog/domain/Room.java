@@ -17,7 +17,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Entity
 @Table(name = "room")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class Room implements Serializable {
+public class Room extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -52,20 +52,8 @@ public class Room implements Serializable {
     @Column(name = "website_link")
     private String websiteLink;
 
-    @Column(name = "created_date")
-    private Instant createdDate;
-
-    @Column(name = "last_modified_date")
-    private Instant lastModifiedDate;
-
-    @Column(name = "created_by")
-    private String createdBy;
-
-    @Column(name = "last_modified_by")
-    private String lastModifiedBy;
-
     @Column(name = "is_deleted")
-    private Boolean isDeleted;
+    private Boolean isDeleted = false;
 
     @JsonIgnoreProperties(value = { "room" }, allowSetters = true)
     @OneToOne
@@ -206,58 +194,6 @@ public class Room implements Serializable {
 
     public void setWebsiteLink(String websiteLink) {
         this.websiteLink = websiteLink;
-    }
-
-    public Instant getCreatedDate() {
-        return this.createdDate;
-    }
-
-    public Room createdDate(Instant createdDate) {
-        this.createdDate = createdDate;
-        return this;
-    }
-
-    public void setCreatedDate(Instant createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public Instant getLastModifiedDate() {
-        return this.lastModifiedDate;
-    }
-
-    public Room lastModifiedDate(Instant lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-        return this;
-    }
-
-    public void setLastModifiedDate(Instant lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
-
-    public String getCreatedBy() {
-        return this.createdBy;
-    }
-
-    public Room createdBy(String createdBy) {
-        this.createdBy = createdBy;
-        return this;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public String getLastModifiedBy() {
-        return this.lastModifiedBy;
-    }
-
-    public Room lastModifiedBy(String lastModifiedBy) {
-        this.lastModifiedBy = lastModifiedBy;
-        return this;
-    }
-
-    public void setLastModifiedBy(String lastModifiedBy) {
-        this.lastModifiedBy = lastModifiedBy;
     }
 
     public Boolean getIsDeleted() {

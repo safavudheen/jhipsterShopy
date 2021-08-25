@@ -72,49 +72,13 @@ export const ProductDetail = (props: RouteComponentProps<{ id: string }>) => {
           </dt>
           <dd>{productEntity.externalLink}</dd>
           <dt>
-            <span id="createdDate">
-              <Translate contentKey="busifrogApp.product.createdDate">Created Date</Translate>
-            </span>
-          </dt>
-          <dd>
-            {productEntity.createdDate ? <TextFormat value={productEntity.createdDate} type="date" format={APP_DATE_FORMAT} /> : null}
-          </dd>
-          <dt>
-            <span id="lastModifiedDate">
-              <Translate contentKey="busifrogApp.product.lastModifiedDate">Last Modified Date</Translate>
-            </span>
-          </dt>
-          <dd>
-            {productEntity.lastModifiedDate ? (
-              <TextFormat value={productEntity.lastModifiedDate} type="date" format={APP_DATE_FORMAT} />
-            ) : null}
-          </dd>
-          <dt>
-            <span id="createdBy">
-              <Translate contentKey="busifrogApp.product.createdBy">Created By</Translate>
-            </span>
-          </dt>
-          <dd>{productEntity.createdBy}</dd>
-          <dt>
-            <span id="lastModifiedBy">
-              <Translate contentKey="busifrogApp.product.lastModifiedBy">Last Modified By</Translate>
-            </span>
-          </dt>
-          <dd>{productEntity.lastModifiedBy}</dd>
-          <dt>
-            <span id="isDeleted">
-              <Translate contentKey="busifrogApp.product.isDeleted">Is Deleted</Translate>
-            </span>
-          </dt>
-          <dd>{productEntity.isDeleted ? 'true' : 'false'}</dd>
-          <dt>
             <Translate contentKey="busifrogApp.product.category">Category</Translate>
           </dt>
-          <dd>{productEntity.category ? productEntity.category.id : ''}</dd>
+          <dd>{productEntity.category ? productEntity.category.name : ''}</dd>
           <dt>
             <Translate contentKey="busifrogApp.product.room">Room</Translate>
           </dt>
-          <dd>{productEntity.room ? productEntity.room.id : ''}</dd>
+          <dd>{productEntity.room ? productEntity.room.name : ''}</dd>
         </dl>
         <Button tag={Link} to="/product" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

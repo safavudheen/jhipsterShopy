@@ -66,49 +66,13 @@ export const ServiceDetail = (props: RouteComponentProps<{ id: string }>) => {
           </dt>
           <dd>{serviceEntity.externalLink}</dd>
           <dt>
-            <span id="createdDate">
-              <Translate contentKey="busifrogApp.service.createdDate">Created Date</Translate>
-            </span>
-          </dt>
-          <dd>
-            {serviceEntity.createdDate ? <TextFormat value={serviceEntity.createdDate} type="date" format={APP_DATE_FORMAT} /> : null}
-          </dd>
-          <dt>
-            <span id="lastModifiedDate">
-              <Translate contentKey="busifrogApp.service.lastModifiedDate">Last Modified Date</Translate>
-            </span>
-          </dt>
-          <dd>
-            {serviceEntity.lastModifiedDate ? (
-              <TextFormat value={serviceEntity.lastModifiedDate} type="date" format={APP_DATE_FORMAT} />
-            ) : null}
-          </dd>
-          <dt>
-            <span id="createdBy">
-              <Translate contentKey="busifrogApp.service.createdBy">Created By</Translate>
-            </span>
-          </dt>
-          <dd>{serviceEntity.createdBy}</dd>
-          <dt>
-            <span id="lastModifiedBy">
-              <Translate contentKey="busifrogApp.service.lastModifiedBy">Last Modified By</Translate>
-            </span>
-          </dt>
-          <dd>{serviceEntity.lastModifiedBy}</dd>
-          <dt>
-            <span id="isDeleted">
-              <Translate contentKey="busifrogApp.service.isDeleted">Is Deleted</Translate>
-            </span>
-          </dt>
-          <dd>{serviceEntity.isDeleted ? 'true' : 'false'}</dd>
-          <dt>
             <Translate contentKey="busifrogApp.service.category">Category</Translate>
           </dt>
-          <dd>{serviceEntity.category ? serviceEntity.category.id : ''}</dd>
+          <dd>{serviceEntity.category ? serviceEntity.category.name : ''}</dd>
           <dt>
             <Translate contentKey="busifrogApp.service.room">Room</Translate>
           </dt>
-          <dd>{serviceEntity.room ? serviceEntity.room.id : ''}</dd>
+          <dd>{serviceEntity.room ? serviceEntity.room.name : ''}</dd>
         </dl>
         <Button tag={Link} to="/service" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

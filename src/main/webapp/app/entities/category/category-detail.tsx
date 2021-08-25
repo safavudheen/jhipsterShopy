@@ -54,45 +54,9 @@ export const CategoryDetail = (props: RouteComponentProps<{ id: string }>) => {
           </dt>
           <dd>{categoryEntity.isApproved ? 'true' : 'false'}</dd>
           <dt>
-            <span id="createdDate">
-              <Translate contentKey="busifrogApp.category.createdDate">Created Date</Translate>
-            </span>
-          </dt>
-          <dd>
-            {categoryEntity.createdDate ? <TextFormat value={categoryEntity.createdDate} type="date" format={APP_DATE_FORMAT} /> : null}
-          </dd>
-          <dt>
-            <span id="lastModifiedDate">
-              <Translate contentKey="busifrogApp.category.lastModifiedDate">Last Modified Date</Translate>
-            </span>
-          </dt>
-          <dd>
-            {categoryEntity.lastModifiedDate ? (
-              <TextFormat value={categoryEntity.lastModifiedDate} type="date" format={APP_DATE_FORMAT} />
-            ) : null}
-          </dd>
-          <dt>
-            <span id="createdBy">
-              <Translate contentKey="busifrogApp.category.createdBy">Created By</Translate>
-            </span>
-          </dt>
-          <dd>{categoryEntity.createdBy}</dd>
-          <dt>
-            <span id="lastModifiedBy">
-              <Translate contentKey="busifrogApp.category.lastModifiedBy">Last Modified By</Translate>
-            </span>
-          </dt>
-          <dd>{categoryEntity.lastModifiedBy}</dd>
-          <dt>
-            <span id="isDeleted">
-              <Translate contentKey="busifrogApp.category.isDeleted">Is Deleted</Translate>
-            </span>
-          </dt>
-          <dd>{categoryEntity.isDeleted ? 'true' : 'false'}</dd>
-          <dt>
             <Translate contentKey="busifrogApp.category.category">Category</Translate>
           </dt>
-          <dd>{categoryEntity.category ? categoryEntity.category.id : ''}</dd>
+          <dd>{categoryEntity.category ? categoryEntity.category.name : ''}</dd>
         </dl>
         <Button tag={Link} to="/category" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}
