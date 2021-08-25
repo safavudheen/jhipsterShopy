@@ -142,44 +142,6 @@ export const ServiceUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 type="text"
               />
               <ValidatedField
-                label={translate('busifrogApp.service.createdDate')}
-                id="service-createdDate"
-                name="createdDate"
-                data-cy="createdDate"
-                type="datetime-local"
-                placeholder="YYYY-MM-DD HH:mm"
-              />
-              <ValidatedField
-                label={translate('busifrogApp.service.lastModifiedDate')}
-                id="service-lastModifiedDate"
-                name="lastModifiedDate"
-                data-cy="lastModifiedDate"
-                type="datetime-local"
-                placeholder="YYYY-MM-DD HH:mm"
-              />
-              <ValidatedField
-                label={translate('busifrogApp.service.createdBy')}
-                id="service-createdBy"
-                name="createdBy"
-                data-cy="createdBy"
-                type="text"
-              />
-              <ValidatedField
-                label={translate('busifrogApp.service.lastModifiedBy')}
-                id="service-lastModifiedBy"
-                name="lastModifiedBy"
-                data-cy="lastModifiedBy"
-                type="text"
-              />
-              <ValidatedField
-                label={translate('busifrogApp.service.isDeleted')}
-                id="service-isDeleted"
-                name="isDeleted"
-                data-cy="isDeleted"
-                check
-                type="checkbox"
-              />
-              <ValidatedField
                 id="service-category"
                 name="categoryId"
                 data-cy="category"

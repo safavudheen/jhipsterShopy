@@ -119,44 +119,6 @@ export const CategoryUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 type="checkbox"
               />
               <ValidatedField
-                label={translate('busifrogApp.category.createdDate')}
-                id="category-createdDate"
-                name="createdDate"
-                data-cy="createdDate"
-                type="datetime-local"
-                placeholder="YYYY-MM-DD HH:mm"
-              />
-              <ValidatedField
-                label={translate('busifrogApp.category.lastModifiedDate')}
-                id="category-lastModifiedDate"
-                name="lastModifiedDate"
-                data-cy="lastModifiedDate"
-                type="datetime-local"
-                placeholder="YYYY-MM-DD HH:mm"
-              />
-              <ValidatedField
-                label={translate('busifrogApp.category.createdBy')}
-                id="category-createdBy"
-                name="createdBy"
-                data-cy="createdBy"
-                type="text"
-              />
-              <ValidatedField
-                label={translate('busifrogApp.category.lastModifiedBy')}
-                id="category-lastModifiedBy"
-                name="lastModifiedBy"
-                data-cy="lastModifiedBy"
-                type="text"
-              />
-              <ValidatedField
-                label={translate('busifrogApp.category.isDeleted')}
-                id="category-isDeleted"
-                name="isDeleted"
-                data-cy="isDeleted"
-                check
-                type="checkbox"
-              />
-              <ValidatedField
                 id="category-category"
                 name="categoryId"
                 data-cy="category"

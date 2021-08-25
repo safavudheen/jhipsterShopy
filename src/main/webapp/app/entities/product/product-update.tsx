@@ -152,44 +152,6 @@ export const ProductUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 type="text"
               />
               <ValidatedField
-                label={translate('busifrogApp.product.createdDate')}
-                id="product-createdDate"
-                name="createdDate"
-                data-cy="createdDate"
-                type="datetime-local"
-                placeholder="YYYY-MM-DD HH:mm"
-              />
-              <ValidatedField
-                label={translate('busifrogApp.product.lastModifiedDate')}
-                id="product-lastModifiedDate"
-                name="lastModifiedDate"
-                data-cy="lastModifiedDate"
-                type="datetime-local"
-                placeholder="YYYY-MM-DD HH:mm"
-              />
-              <ValidatedField
-                label={translate('busifrogApp.product.createdBy')}
-                id="product-createdBy"
-                name="createdBy"
-                data-cy="createdBy"
-                type="text"
-              />
-              <ValidatedField
-                label={translate('busifrogApp.product.lastModifiedBy')}
-                id="product-lastModifiedBy"
-                name="lastModifiedBy"
-                data-cy="lastModifiedBy"
-                type="text"
-              />
-              <ValidatedField
-                label={translate('busifrogApp.product.isDeleted')}
-                id="product-isDeleted"
-                name="isDeleted"
-                data-cy="isDeleted"
-                check
-                type="checkbox"
-              />
-              <ValidatedField
                 id="product-category"
                 name="categoryId"
                 data-cy="category"
