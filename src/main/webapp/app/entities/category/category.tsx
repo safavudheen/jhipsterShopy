@@ -137,22 +137,6 @@ export const Category = (props: RouteComponentProps<{ url: string }>) => {
                   <th className="hand" onClick={sort('isApproved')}>
                     <Translate contentKey="busifrogApp.category.isApproved">Is Approved</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
-                  <th className="hand" onClick={sort('createdDate')}>
-                    <Translate contentKey="busifrogApp.category.createdDate">Created Date</Translate> <FontAwesomeIcon icon="sort" />
-                  </th>
-                  <th className="hand" onClick={sort('lastModifiedDate')}>
-                    <Translate contentKey="busifrogApp.category.lastModifiedDate">Last Modified Date</Translate>{' '}
-                    <FontAwesomeIcon icon="sort" />
-                  </th>
-                  <th className="hand" onClick={sort('createdBy')}>
-                    <Translate contentKey="busifrogApp.category.createdBy">Created By</Translate> <FontAwesomeIcon icon="sort" />
-                  </th>
-                  <th className="hand" onClick={sort('lastModifiedBy')}>
-                    <Translate contentKey="busifrogApp.category.lastModifiedBy">Last Modified By</Translate> <FontAwesomeIcon icon="sort" />
-                  </th>
-                  <th className="hand" onClick={sort('isDeleted')}>
-                    <Translate contentKey="busifrogApp.category.isDeleted">Is Deleted</Translate> <FontAwesomeIcon icon="sort" />
-                  </th>
                   <th>
                     <Translate contentKey="busifrogApp.category.category">Category</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
@@ -168,21 +152,10 @@ export const Category = (props: RouteComponentProps<{ url: string }>) => {
                       </Button>
                     </td>
                     <td>{category.name}</td>
-                    <td>{category.imageUrl}</td>
-                    <td>{category.iconUrl}</td>
+                    <td>{category.imageUrl && <img src={category.imageUrl} width="60" height="60" />}</td>
+                    <td>{category.iconUrl && <img src={category.iconUrl} width="60" height="60" />}</td>
                     <td>{category.isApproved ? 'true' : 'false'}</td>
-                    <td>
-                      {category.createdDate ? <TextFormat type="date" value={category.createdDate} format={APP_DATE_FORMAT} /> : null}
-                    </td>
-                    <td>
-                      {category.lastModifiedDate ? (
-                        <TextFormat type="date" value={category.lastModifiedDate} format={APP_DATE_FORMAT} />
-                      ) : null}
-                    </td>
-                    <td>{category.createdBy}</td>
-                    <td>{category.lastModifiedBy}</td>
-                    <td>{category.isDeleted ? 'true' : 'false'}</td>
-                    <td>{category.category ? <Link to={`category/${category.category.id}`}>{category.category.id}</Link> : ''}</td>
+                    <td>{category.category ? <Link to={`category/${category.category.id}`}>{category.category.name}</Link> : ''}</td>
                     <td className="text-right">
                       <div className="btn-group flex-btn-group-container">
                         <Button tag={Link} to={`${match.url}/${category.id}`} color="info" size="sm" data-cy="entityDetailsButton">
