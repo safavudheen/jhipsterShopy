@@ -144,22 +144,6 @@ export const Service = (props: RouteComponentProps<{ url: string }>) => {
                   <th className="hand" onClick={sort('externalLink')}>
                     <Translate contentKey="busifrogApp.service.externalLink">External Link</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
-                  <th className="hand" onClick={sort('createdDate')}>
-                    <Translate contentKey="busifrogApp.service.createdDate">Created Date</Translate> <FontAwesomeIcon icon="sort" />
-                  </th>
-                  <th className="hand" onClick={sort('lastModifiedDate')}>
-                    <Translate contentKey="busifrogApp.service.lastModifiedDate">Last Modified Date</Translate>{' '}
-                    <FontAwesomeIcon icon="sort" />
-                  </th>
-                  <th className="hand" onClick={sort('createdBy')}>
-                    <Translate contentKey="busifrogApp.service.createdBy">Created By</Translate> <FontAwesomeIcon icon="sort" />
-                  </th>
-                  <th className="hand" onClick={sort('lastModifiedBy')}>
-                    <Translate contentKey="busifrogApp.service.lastModifiedBy">Last Modified By</Translate> <FontAwesomeIcon icon="sort" />
-                  </th>
-                  <th className="hand" onClick={sort('isDeleted')}>
-                    <Translate contentKey="busifrogApp.service.isDeleted">Is Deleted</Translate> <FontAwesomeIcon icon="sort" />
-                  </th>
                   <th>
                     <Translate contentKey="busifrogApp.service.category">Category</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
@@ -183,17 +167,8 @@ export const Service = (props: RouteComponentProps<{ url: string }>) => {
                     <td>{service.shortDescription}</td>
                     <td>{service.description}</td>
                     <td>{service.externalLink}</td>
-                    <td>{service.createdDate ? <TextFormat type="date" value={service.createdDate} format={APP_DATE_FORMAT} /> : null}</td>
-                    <td>
-                      {service.lastModifiedDate ? (
-                        <TextFormat type="date" value={service.lastModifiedDate} format={APP_DATE_FORMAT} />
-                      ) : null}
-                    </td>
-                    <td>{service.createdBy}</td>
-                    <td>{service.lastModifiedBy}</td>
-                    <td>{service.isDeleted ? 'true' : 'false'}</td>
-                    <td>{service.category ? <Link to={`category/${service.category.id}`}>{service.category.id}</Link> : ''}</td>
-                    <td>{service.room ? <Link to={`room/${service.room.id}`}>{service.room.id}</Link> : ''}</td>
+                    <td>{service.category ? <Link to={`category/${service.category.id}`}>{service.category.name}</Link> : ''}</td>
+                    <td>{service.room ? <Link to={`room/${service.room.id}`}>{service.room.name}</Link> : ''}</td>
                     <td className="text-right">
                       <div className="btn-group flex-btn-group-container">
                         <Button tag={Link} to={`${match.url}/${service.id}`} color="info" size="sm" data-cy="entityDetailsButton">

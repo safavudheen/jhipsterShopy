@@ -147,22 +147,6 @@ export const Product = (props: RouteComponentProps<{ url: string }>) => {
                   <th className="hand" onClick={sort('externalLink')}>
                     <Translate contentKey="busifrogApp.product.externalLink">External Link</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
-                  <th className="hand" onClick={sort('createdDate')}>
-                    <Translate contentKey="busifrogApp.product.createdDate">Created Date</Translate> <FontAwesomeIcon icon="sort" />
-                  </th>
-                  <th className="hand" onClick={sort('lastModifiedDate')}>
-                    <Translate contentKey="busifrogApp.product.lastModifiedDate">Last Modified Date</Translate>{' '}
-                    <FontAwesomeIcon icon="sort" />
-                  </th>
-                  <th className="hand" onClick={sort('createdBy')}>
-                    <Translate contentKey="busifrogApp.product.createdBy">Created By</Translate> <FontAwesomeIcon icon="sort" />
-                  </th>
-                  <th className="hand" onClick={sort('lastModifiedBy')}>
-                    <Translate contentKey="busifrogApp.product.lastModifiedBy">Last Modified By</Translate> <FontAwesomeIcon icon="sort" />
-                  </th>
-                  <th className="hand" onClick={sort('isDeleted')}>
-                    <Translate contentKey="busifrogApp.product.isDeleted">Is Deleted</Translate> <FontAwesomeIcon icon="sort" />
-                  </th>
                   <th>
                     <Translate contentKey="busifrogApp.product.category">Category</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
@@ -187,17 +171,8 @@ export const Product = (props: RouteComponentProps<{ url: string }>) => {
                     <td>{product.shortDescription}</td>
                     <td>{product.description}</td>
                     <td>{product.externalLink}</td>
-                    <td>{product.createdDate ? <TextFormat type="date" value={product.createdDate} format={APP_DATE_FORMAT} /> : null}</td>
-                    <td>
-                      {product.lastModifiedDate ? (
-                        <TextFormat type="date" value={product.lastModifiedDate} format={APP_DATE_FORMAT} />
-                      ) : null}
-                    </td>
-                    <td>{product.createdBy}</td>
-                    <td>{product.lastModifiedBy}</td>
-                    <td>{product.isDeleted ? 'true' : 'false'}</td>
-                    <td>{product.category ? <Link to={`category/${product.category.id}`}>{product.category.id}</Link> : ''}</td>
-                    <td>{product.room ? <Link to={`room/${product.room.id}`}>{product.room.id}</Link> : ''}</td>
+                    <td>{product.category ? <Link to={`category/${product.category.id}`}>{product.category.name}</Link> : ''}</td>
+                    <td>{product.room ? <Link to={`room/${product.room.id}`}>{product.room.name}</Link> : ''}</td>
                     <td className="text-right">
                       <div className="btn-group flex-btn-group-container">
                         <Button tag={Link} to={`${match.url}/${product.id}`} color="info" size="sm" data-cy="entityDetailsButton">

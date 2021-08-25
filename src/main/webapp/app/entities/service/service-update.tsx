@@ -191,7 +191,7 @@ export const ServiceUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 {categories
                   ? categories.map(otherEntity => (
                       <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.id}
+                        {otherEntity.name}
                       </option>
                     ))
                   : null}
@@ -211,7 +211,7 @@ export const ServiceUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 {rooms
                   ? rooms.map(otherEntity => (
                       <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.id}
+                        {otherEntity.name}
                       </option>
                     ))
                   : null}
