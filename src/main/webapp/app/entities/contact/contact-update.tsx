@@ -160,44 +160,6 @@ export const ContactUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 data-cy="longitude"
                 type="text"
               />
-              <ValidatedField
-                label={translate('busifrogApp.contact.createdDate')}
-                id="contact-createdDate"
-                name="createdDate"
-                data-cy="createdDate"
-                type="datetime-local"
-                placeholder="YYYY-MM-DD HH:mm"
-              />
-              <ValidatedField
-                label={translate('busifrogApp.contact.lastModifiedDate')}
-                id="contact-lastModifiedDate"
-                name="lastModifiedDate"
-                data-cy="lastModifiedDate"
-                type="datetime-local"
-                placeholder="YYYY-MM-DD HH:mm"
-              />
-              <ValidatedField
-                label={translate('busifrogApp.contact.createdBy')}
-                id="contact-createdBy"
-                name="createdBy"
-                data-cy="createdBy"
-                type="text"
-              />
-              <ValidatedField
-                label={translate('busifrogApp.contact.lastModifiedBy')}
-                id="contact-lastModifiedBy"
-                name="lastModifiedBy"
-                data-cy="lastModifiedBy"
-                type="text"
-              />
-              <ValidatedField
-                label={translate('busifrogApp.contact.isDeleted')}
-                id="contact-isDeleted"
-                name="isDeleted"
-                data-cy="isDeleted"
-                check
-                type="checkbox"
-              />
               <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/contact" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
