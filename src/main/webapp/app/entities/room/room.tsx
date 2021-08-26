@@ -74,21 +74,6 @@ export const Room = (props: RouteComponentProps<{ url: string }>) => {
                   <Translate contentKey="busifrogApp.room.websiteLink">Website Link</Translate>
                 </th>
                 <th>
-                  <Translate contentKey="busifrogApp.room.createdDate">Created Date</Translate>
-                </th>
-                <th>
-                  <Translate contentKey="busifrogApp.room.lastModifiedDate">Last Modified Date</Translate>
-                </th>
-                <th>
-                  <Translate contentKey="busifrogApp.room.createdBy">Created By</Translate>
-                </th>
-                <th>
-                  <Translate contentKey="busifrogApp.room.lastModifiedBy">Last Modified By</Translate>
-                </th>
-                <th>
-                  <Translate contentKey="busifrogApp.room.isDeleted">Is Deleted</Translate>
-                </th>
-                <th>
                   <Translate contentKey="busifrogApp.room.contact">Contact</Translate>
                 </th>
                 <th>
@@ -115,15 +100,8 @@ export const Room = (props: RouteComponentProps<{ url: string }>) => {
                     <Translate contentKey={`busifrogApp.RoomStatus.${room.status}`} />
                   </td>
                   <td>{room.websiteLink}</td>
-                  <td>{room.createdDate ? <TextFormat type="date" value={room.createdDate} format={APP_DATE_FORMAT} /> : null}</td>
-                  <td>
-                    {room.lastModifiedDate ? <TextFormat type="date" value={room.lastModifiedDate} format={APP_DATE_FORMAT} /> : null}
-                  </td>
-                  <td>{room.createdBy}</td>
-                  <td>{room.lastModifiedBy}</td>
-                  <td>{room.isDeleted ? 'true' : 'false'}</td>
-                  <td>{room.contact ? <Link to={`contact/${room.contact.id}`}>{room.contact.id}</Link> : ''}</td>
-                  <td>{room.sellerPlan ? <Link to={`seller-plan/${room.sellerPlan.id}`}>{room.sellerPlan.id}</Link> : ''}</td>
+                  <td>{room.contact ? <Link to={`contact/${room.contact.id}`}>{room.contact.firstPersonName}</Link> : ''}</td>
+                  <td>{room.sellerPlan ? <Link to={`seller-plan/${room.sellerPlan.id}`}>{room.sellerPlan.name}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${room.id}`} color="info" size="sm" data-cy="entityDetailsButton">

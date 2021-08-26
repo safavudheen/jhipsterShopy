@@ -89,42 +89,6 @@ export const ContactDetail = (props: RouteComponentProps<{ id: string }>) => {
             </span>
           </dt>
           <dd>{contactEntity.longitude}</dd>
-          <dt>
-            <span id="createdDate">
-              <Translate contentKey="busifrogApp.contact.createdDate">Created Date</Translate>
-            </span>
-          </dt>
-          <dd>
-            {contactEntity.createdDate ? <TextFormat value={contactEntity.createdDate} type="date" format={APP_DATE_FORMAT} /> : null}
-          </dd>
-          <dt>
-            <span id="lastModifiedDate">
-              <Translate contentKey="busifrogApp.contact.lastModifiedDate">Last Modified Date</Translate>
-            </span>
-          </dt>
-          <dd>
-            {contactEntity.lastModifiedDate ? (
-              <TextFormat value={contactEntity.lastModifiedDate} type="date" format={APP_DATE_FORMAT} />
-            ) : null}
-          </dd>
-          <dt>
-            <span id="createdBy">
-              <Translate contentKey="busifrogApp.contact.createdBy">Created By</Translate>
-            </span>
-          </dt>
-          <dd>{contactEntity.createdBy}</dd>
-          <dt>
-            <span id="lastModifiedBy">
-              <Translate contentKey="busifrogApp.contact.lastModifiedBy">Last Modified By</Translate>
-            </span>
-          </dt>
-          <dd>{contactEntity.lastModifiedBy}</dd>
-          <dt>
-            <span id="isDeleted">
-              <Translate contentKey="busifrogApp.contact.isDeleted">Is Deleted</Translate>
-            </span>
-          </dt>
-          <dd>{contactEntity.isDeleted ? 'true' : 'false'}</dd>
         </dl>
         <Button tag={Link} to="/contact" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

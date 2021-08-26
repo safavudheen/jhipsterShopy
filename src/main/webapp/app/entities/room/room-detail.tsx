@@ -79,42 +79,7 @@ export const RoomDetail = (props: RouteComponentProps<{ id: string }>) => {
             </span>
           </dt>
           <dd>{roomEntity.websiteLink}</dd>
-          <dt>
-            <span id="createdDate">
-              <Translate contentKey="busifrogApp.room.createdDate">Created Date</Translate>
-            </span>
-          </dt>
-          <dd>{roomEntity.createdDate ? <TextFormat value={roomEntity.createdDate} type="date" format={APP_DATE_FORMAT} /> : null}</dd>
-          <dt>
-            <span id="lastModifiedDate">
-              <Translate contentKey="busifrogApp.room.lastModifiedDate">Last Modified Date</Translate>
-            </span>
-          </dt>
-          <dd>
-            {roomEntity.lastModifiedDate ? <TextFormat value={roomEntity.lastModifiedDate} type="date" format={APP_DATE_FORMAT} /> : null}
-          </dd>
-          <dt>
-            <span id="createdBy">
-              <Translate contentKey="busifrogApp.room.createdBy">Created By</Translate>
-            </span>
-          </dt>
-          <dd>{roomEntity.createdBy}</dd>
-          <dt>
-            <span id="lastModifiedBy">
-              <Translate contentKey="busifrogApp.room.lastModifiedBy">Last Modified By</Translate>
-            </span>
-          </dt>
-          <dd>{roomEntity.lastModifiedBy}</dd>
-          <dt>
-            <span id="isDeleted">
-              <Translate contentKey="busifrogApp.room.isDeleted">Is Deleted</Translate>
-            </span>
-          </dt>
-          <dd>{roomEntity.isDeleted ? 'true' : 'false'}</dd>
-          <dt>
-            <Translate contentKey="busifrogApp.room.contact">Contact</Translate>
-          </dt>
-          <dd>{roomEntity.contact ? roomEntity.contact.id : ''}</dd>
+          <dd>{roomEntity.contact ? roomEntity.contact.firstPersonName : ''}</dd>
           <dt>
             <Translate contentKey="busifrogApp.room.sellerPlan">Seller Plan</Translate>
           </dt>

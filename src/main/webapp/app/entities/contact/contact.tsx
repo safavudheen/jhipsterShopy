@@ -79,21 +79,6 @@ export const Contact = (props: RouteComponentProps<{ url: string }>) => {
                 <th>
                   <Translate contentKey="busifrogApp.contact.longitude">Longitude</Translate>
                 </th>
-                <th>
-                  <Translate contentKey="busifrogApp.contact.createdDate">Created Date</Translate>
-                </th>
-                <th>
-                  <Translate contentKey="busifrogApp.contact.lastModifiedDate">Last Modified Date</Translate>
-                </th>
-                <th>
-                  <Translate contentKey="busifrogApp.contact.createdBy">Created By</Translate>
-                </th>
-                <th>
-                  <Translate contentKey="busifrogApp.contact.lastModifiedBy">Last Modified By</Translate>
-                </th>
-                <th>
-                  <Translate contentKey="busifrogApp.contact.isDeleted">Is Deleted</Translate>
-                </th>
                 <th />
               </tr>
             </thead>
@@ -115,13 +100,6 @@ export const Contact = (props: RouteComponentProps<{ url: string }>) => {
                   <td>{contact.pincode}</td>
                   <td>{contact.latitude}</td>
                   <td>{contact.longitude}</td>
-                  <td>{contact.createdDate ? <TextFormat type="date" value={contact.createdDate} format={APP_DATE_FORMAT} /> : null}</td>
-                  <td>
-                    {contact.lastModifiedDate ? <TextFormat type="date" value={contact.lastModifiedDate} format={APP_DATE_FORMAT} /> : null}
-                  </td>
-                  <td>{contact.createdBy}</td>
-                  <td>{contact.lastModifiedBy}</td>
-                  <td>{contact.isDeleted ? 'true' : 'false'}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${contact.id}`} color="info" size="sm" data-cy="entityDetailsButton">

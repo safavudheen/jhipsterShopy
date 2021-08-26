@@ -166,44 +166,6 @@ export const RoomUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 type="text"
               />
               <ValidatedField
-                label={translate('busifrogApp.room.createdDate')}
-                id="room-createdDate"
-                name="createdDate"
-                data-cy="createdDate"
-                type="datetime-local"
-                placeholder="YYYY-MM-DD HH:mm"
-              />
-              <ValidatedField
-                label={translate('busifrogApp.room.lastModifiedDate')}
-                id="room-lastModifiedDate"
-                name="lastModifiedDate"
-                data-cy="lastModifiedDate"
-                type="datetime-local"
-                placeholder="YYYY-MM-DD HH:mm"
-              />
-              <ValidatedField
-                label={translate('busifrogApp.room.createdBy')}
-                id="room-createdBy"
-                name="createdBy"
-                data-cy="createdBy"
-                type="text"
-              />
-              <ValidatedField
-                label={translate('busifrogApp.room.lastModifiedBy')}
-                id="room-lastModifiedBy"
-                name="lastModifiedBy"
-                data-cy="lastModifiedBy"
-                type="text"
-              />
-              <ValidatedField
-                label={translate('busifrogApp.room.isDeleted')}
-                id="room-isDeleted"
-                name="isDeleted"
-                data-cy="isDeleted"
-                check
-                type="checkbox"
-              />
-              <ValidatedField
                 id="room-contact"
                 name="contactId"
                 data-cy="contact"
@@ -214,7 +176,7 @@ export const RoomUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 {contacts
                   ? contacts.map(otherEntity => (
                       <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.id}
+                        {otherEntity.firstPersonName}
                       </option>
                     ))
                   : null}
@@ -230,7 +192,7 @@ export const RoomUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 {sellerPlans
                   ? sellerPlans.map(otherEntity => (
                       <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.id}
+                        {otherEntity.name}
                       </option>
                     ))
                   : null}
