@@ -79,6 +79,9 @@ export const RoomDetail = (props: RouteComponentProps<{ id: string }>) => {
             </span>
           </dt>
           <dd>{roomEntity.websiteLink}</dd>
+          <dt>
+            <Translate contentKey="busifrogApp.room.contact">Contact</Translate>
+          </dt>
           <dd>{roomEntity.contact ? roomEntity.contact.firstPersonName : ''}</dd>
           <dt>
             <Translate contentKey="busifrogApp.room.sellerPlan">Seller Plan</Translate>
