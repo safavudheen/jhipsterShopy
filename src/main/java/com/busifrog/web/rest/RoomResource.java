@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -184,6 +185,11 @@ public class RoomResource {
     public List<Room> getAllRooms() {
         log.debug("REST request to get all Rooms");
         return roomRepository.findAll();
+    }
+
+    @GetMapping("/category/{categoryId}/rooms")
+    public List<Room> getAllRoomsByCategory(@PathVariable Long categoryId) {
+        return roomRepository.findAllRoomsByCategory(categoryId);
     }
 
     /**

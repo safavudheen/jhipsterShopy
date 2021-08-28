@@ -183,6 +183,14 @@ public class CategoryResource {
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
+    @GetMapping("/main-categories")
+    public ResponseEntity<List<Category>> getAllMainCategories(Pageable pageable) {
+        log.debug("REST request to get a page of Categories");
+        Page<Category> page = categoryRepository.findAllMainCategories(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
     /**
      * {@code GET  /categories/:id} : get the "id" category.
      *
