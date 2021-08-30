@@ -1,6 +1,9 @@
 package com.busifrog.repository;
 
+import com.busifrog.domain.Category;
 import com.busifrog.domain.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -9,4 +12,10 @@ import org.springframework.stereotype.Repository;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Long> {}
+public interface ProductRepository extends JpaRepository<Product, Long> {
+    @Query(value = "select * from product p where p.room_id =?1", nativeQuery = true)
+    Page<Product> findAllByRoomId(Long roomId, Pageable pageable);
+
+    @Query(value = "select * from product p where p.category_id =?1", nativeQuery = true)
+    Page<Product> findAllByCategoryId(Long categoryId, Pageable pageable);
+}

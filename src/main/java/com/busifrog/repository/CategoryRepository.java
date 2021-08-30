@@ -14,4 +14,7 @@ import org.springframework.stereotype.Repository;
 public interface CategoryRepository extends JpaRepository<Category, Long> {
     @Query(value = "select * from category where category_id is null", nativeQuery = true)
     Page<Category> findAllMainCategories(Pageable pageable);
+
+    @Query(value = "select * from category where category_id =?1", nativeQuery = true)
+    Page<Category> findAllSubCategoriesById(Long id, Pageable pageable);
 }
