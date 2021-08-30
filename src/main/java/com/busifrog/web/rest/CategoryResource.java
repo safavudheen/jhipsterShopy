@@ -204,6 +204,14 @@ public class CategoryResource {
         return ResponseUtil.wrapOrNotFound(category);
     }
 
+    @GetMapping("/category/{id}/categories")
+    public ResponseEntity<List<Category>> getSubCategories(@PathVariable Long id, Pageable pageable) {
+        log.debug("REST request to get Category : {}", id);
+        Page<Category> page = categoryRepository.findAllSubCategoriesById(id, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
     /**
      * {@code DELETE  /categories/:id} : delete the "id" category.
      *
