@@ -14,6 +14,9 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface RoomRepository extends JpaRepository<Room, Long> {
-    @Query(value = "select r.* from room r join product p on p.room_id = r.id where p.category_id = ?1", nativeQuery = true)
+    @Query(
+        value = "select distinct r.* from room r LEFT OUTER join product p on p.room_id = r.id left OUTER join service s on s.room_id = r.id where p.category_id =?1 or s.category_id =?1",
+        nativeQuery = true
+    )
     List<Room> findAllRoomsByCategory(Long categoryId);
 }
