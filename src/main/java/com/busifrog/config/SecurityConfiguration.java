@@ -102,6 +102,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers(HttpMethod.GET, "/api/rooms").permitAll()
             .antMatchers(HttpMethod.GET, "/api/rooms/{id}").permitAll()
             .antMatchers(HttpMethod.GET, "/api/room/{id}/products").permitAll()
+            .antMatchers(HttpMethod.GET, "/api/room/{id}/categories").permitAll()
             .antMatchers(HttpMethod.GET, "/api/contacts/{id}").permitAll()
             .antMatchers("/api/account/reset-password/init").permitAll()
             .antMatchers("/api/account/reset-password/finish").permitAll()
