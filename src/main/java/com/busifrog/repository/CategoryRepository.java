@@ -21,7 +21,7 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     Page<Category> findAllSubCategoriesById(Long id, Pageable pageable);
 
     @Query(
-        value = "select distinct c.* from category c left outer join product p on p.room_id = c.id left outer join service s on s.room_id = c.id where p.room_id =?1 or s.room_id =?1",
+        value = "select distinct c.* from category c left outer join product p on p.category_id = c.id left outer join service s on s.category_id = c.id where p.room_id =?1 or s.room_id =?1",
         nativeQuery = true
     )
     Page<Category> findAllCategoriesByRoom(Long categoryId, Pageable pageable);

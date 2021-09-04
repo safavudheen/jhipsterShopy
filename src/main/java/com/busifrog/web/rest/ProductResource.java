@@ -196,7 +196,6 @@ public class ProductResource {
 
     @GetMapping("room/{id}/products")
     public ResponseEntity<List<Product>> getAllProductsByRoom(@PathVariable Long id, Pageable pageable) {
-        log.debug("REST request to get a page of Products");
         Page<Product> page = productRepository.findAllByRoomId(id, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -204,7 +203,6 @@ public class ProductResource {
 
     @GetMapping("category/{id}/products")
     public ResponseEntity<List<Product>> getAllProductsByCategory(@PathVariable Long id, Pageable pageable) {
-        log.debug("REST request to get a page of Products");
         Page<Product> page = productRepository.findAllByCategoryId(id, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
