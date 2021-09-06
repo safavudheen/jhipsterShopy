@@ -213,6 +213,12 @@ public class ContactResource {
         return ResponseUtil.wrapOrNotFound(contact);
     }
 
+    @GetMapping("/room/{id}/contact")
+    public ResponseEntity<Contact> getContactByRoom(@PathVariable Long id) {
+        Optional<Contact> contact = contactRepository.findByRoomId(id);
+        return ResponseUtil.wrapOrNotFound(contact);
+    }
+
     /**
      * {@code DELETE  /contacts/:id} : delete the "id" contact.
      *
