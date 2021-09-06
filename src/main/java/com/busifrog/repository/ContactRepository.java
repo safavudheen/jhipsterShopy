@@ -1,6 +1,10 @@
 package com.busifrog.repository;
 
 import com.busifrog.domain.Contact;
+import com.busifrog.domain.Product;
+import java.util.Optional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -9,4 +13,7 @@ import org.springframework.stereotype.Repository;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface ContactRepository extends JpaRepository<Contact, Long> {}
+public interface ContactRepository extends JpaRepository<Contact, Long> {
+    @Query(value = "select c.* from contact c join room r on r.contact_id = c.id where r.id =?1", nativeQuery = true)
+    Optional<Contact> findByRoomId(Long roomId);
+}
