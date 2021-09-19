@@ -2,8 +2,12 @@ package com.busifrog.service;
 
 import com.busifrog.config.Constants;
 import com.busifrog.domain.Authority;
+import com.busifrog.domain.Contact;
+import com.busifrog.domain.Room;
 import com.busifrog.domain.User;
 import com.busifrog.repository.AuthorityRepository;
+import com.busifrog.repository.ContactRepository;
+import com.busifrog.repository.RoomRepository;
 import com.busifrog.repository.UserRepository;
 import com.busifrog.security.AuthoritiesConstants;
 import com.busifrog.security.SecurityUtils;
@@ -35,6 +39,10 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    private final RoomRepository roomRepository;
+
+    private final ContactRepository contactRepository;
+
     private final PasswordEncoder passwordEncoder;
 
     private final AuthorityRepository authorityRepository;
@@ -43,11 +51,15 @@ public class UserService {
 
     public UserService(
         UserRepository userRepository,
+        RoomRepository roomRepository,
+        ContactRepository contactRepository,
         PasswordEncoder passwordEncoder,
         AuthorityRepository authorityRepository,
         CacheManager cacheManager
     ) {
         this.userRepository = userRepository;
+        this.roomRepository = roomRepository;
+        this.contactRepository = contactRepository;
         this.passwordEncoder = passwordEncoder;
         this.authorityRepository = authorityRepository;
         this.cacheManager = cacheManager;
@@ -127,15 +139,25 @@ public class UserService {
         newUser.setPassword(encryptedPassword);
         newUser.setFirstName(userDTO.getFirstName());
         newUser.setLastName(userDTO.getLastName());
+        newUser.setActivated(true);
+        if (isOwner) {
+            Contact contact = new Contact();
+            Contact savedContact = contactRepository.save(contact);
+            Room newRoom = new Room();
+            newRoom.setName("Enter your company name");
+            newRoom.setContact(savedContact);
+            Room result = roomRepository.save(newRoom);
+            newUser.setRoomId(result.getId());
+        }
         if (userDTO.getEmail() != null) {
             newUser.setEmail(userDTO.getEmail().toLowerCase());
         }
         newUser.setImageUrl(userDTO.getImageUrl());
         newUser.setLangKey(userDTO.getLangKey());
         // new user is not active
-        newUser.setActivated(false);
+        newUser.setActivated(true);
         // new user gets registration key
-        newUser.setActivationKey(RandomUtil.generateActivationKey());
+        //        newUser.setActivationKey(RandomUtil.generateActivationKey());
         Set<Authority> authorities = new HashSet<>();
         if (isOwner) authorityRepository.findById(AuthoritiesConstants.OWNER).ifPresent(authorities::add); else authorityRepository
             .findById(AuthoritiesConstants.USER)
@@ -344,5 +366,9 @@ public class UserService {
         if (user.getEmail() != null) {
             Objects.requireNonNull(cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE)).evict(user.getEmail());
         }
+    }
+
+    public User getCurrentUser() {
+        return userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get()).get();
     }
 }
