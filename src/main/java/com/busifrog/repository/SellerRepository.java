@@ -19,4 +19,7 @@ public interface SellerRepository extends JpaRepository<Seller, Long> {
         nativeQuery = true
     )
     List<Seller> findAllSellersByCategory(Long categoryId);
+
+    @Query(value = "select* from seller r where r.id = ?1", nativeQuery = true)
+    List<Seller> findAllById(long id);
 }

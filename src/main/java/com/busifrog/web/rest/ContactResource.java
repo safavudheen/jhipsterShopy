@@ -2,6 +2,9 @@ package com.busifrog.web.rest;
 
 import com.busifrog.domain.Contact;
 import com.busifrog.repository.ContactRepository;
+import com.busifrog.security.AuthoritiesConstants;
+import com.busifrog.security.SecurityUtils;
+import com.busifrog.service.UserService;
 import com.busifrog.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -36,8 +39,11 @@ public class ContactResource {
 
     private final ContactRepository contactRepository;
 
-    public ContactResource(ContactRepository contactRepository) {
+    private final UserService userService;
+
+    public ContactResource(ContactRepository contactRepository, UserService userService) {
         this.contactRepository = contactRepository;
+        this.userService = userService;
     }
 
     /**
@@ -189,6 +195,9 @@ public class ContactResource {
      */
     @GetMapping("/contacts")
     public List<Contact> getAllContacts(@RequestParam(required = false) String filter) {
+        if (SecurityUtils.hasCurrentUserThisAuthority(AuthoritiesConstants.OWNER)) {
+            return contactRepository.findAllBySellerId(userService.getCurrentUser().getSellerId());
+        }
         if ("seller-is-null".equals(filter)) {
             log.debug("REST request to get all Contacts where seller is null");
             return StreamSupport

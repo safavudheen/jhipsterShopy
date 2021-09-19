@@ -2,6 +2,9 @@ package com.busifrog.web.rest;
 
 import com.busifrog.domain.Service;
 import com.busifrog.repository.ServiceRepository;
+import com.busifrog.security.AuthoritiesConstants;
+import com.busifrog.security.SecurityUtils;
+import com.busifrog.service.UserService;
 import com.busifrog.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -42,8 +45,11 @@ public class ServiceResource {
 
     private final ServiceRepository serviceRepository;
 
-    public ServiceResource(ServiceRepository serviceRepository) {
+    private final UserService userService;
+
+    public ServiceResource(ServiceRepository serviceRepository, UserService userService) {
         this.serviceRepository = serviceRepository;
+        this.userService = userService;
     }
 
     /**
@@ -186,7 +192,26 @@ public class ServiceResource {
     @GetMapping("/services")
     public ResponseEntity<List<Service>> getAllServices(Pageable pageable) {
         log.debug("REST request to get a page of Services");
-        Page<Service> page = serviceRepository.findAll(pageable);
+        Page<Service> page;
+        if (SecurityUtils.hasCurrentUserThisAuthority(AuthoritiesConstants.OWNER)) {
+            page = serviceRepository.findAllBySellerId(userService.getCurrentUser().getSellerId(), pageable);
+        } else {
+            page = serviceRepository.findAll(pageable);
+        }
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    @GetMapping("seller/{id}/services")
+    public ResponseEntity<List<Service>> getAllServicesBySeller(@PathVariable long id, Pageable pageable) {
+        Page<Service> page = serviceRepository.findAllBySellerId(id, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    @GetMapping("category/{id}/services")
+    public ResponseEntity<List<Service>> getAllServicesByCategory(@PathVariable long id, Pageable pageable) {
+        Page<Service> page = serviceRepository.findAllByCategoryId(id, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

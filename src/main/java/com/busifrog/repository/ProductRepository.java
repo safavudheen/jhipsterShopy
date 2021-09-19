@@ -13,9 +13,8 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
-    @Query(value = "select * from product p where p.seller_id =?1", nativeQuery = true)
-    Page<Product> findAllBySellerId(Long sellerId, Pageable pageable);
-
     @Query(value = "select * from product p where p.category_id =?1", nativeQuery = true)
     Page<Product> findAllByCategoryId(Long categoryId, Pageable pageable);
+
+    Page<Product> findAllBySellerId(Long sellerId, Pageable pageable);
 }
