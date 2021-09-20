@@ -216,21 +216,6 @@ public class ServiceResource {
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
-    @GetMapping("seller/{id}/services")
-    public ResponseEntity<List<Service>> getAllServicesBySeller(@PathVariable Long id, Pageable pageable) {
-        Page<Service> page = serviceRepository.findAllBySellerId(id, pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
-    }
-
-    @GetMapping("category/{id}/services")
-    public ResponseEntity<List<Service>> getAllServicesByCategory(@PathVariable Long id, Pageable pageable) {
-        log.debug("REST request to get a page of Products");
-        Page<Service> page = serviceRepository.findAllByCategoryId(id, pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
-    }
-
     /**
      * {@code GET  /services/:id} : get the "id" service.
      *
