@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { ICategory } from 'app/shared/model/category.model';
-import { IRoom } from 'app/shared/model/room.model';
+import { ISeller } from 'app/shared/model/seller.model';
 
 export interface IService {
   id?: number;
@@ -16,7 +16,7 @@ export interface IService {
   lastModifiedBy?: string | null;
   isDeleted?: boolean | null;
   category?: ICategory;
-  room?: IRoom;
+  seller?: ISeller;
 }
 
 export const defaultValue: Readonly<IService> = {

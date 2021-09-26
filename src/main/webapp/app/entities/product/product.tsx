@@ -151,7 +151,7 @@ export const Product = (props: RouteComponentProps<{ url: string }>) => {
                     <Translate contentKey="busifrogApp.product.category">Category</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
                   <th>
-                    <Translate contentKey="busifrogApp.product.room">Room</Translate> <FontAwesomeIcon icon="sort" />
+                    <Translate contentKey="busifrogApp.product.seller">Seller</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
                   <th />
                 </tr>
@@ -172,7 +172,7 @@ export const Product = (props: RouteComponentProps<{ url: string }>) => {
                     <td>{product.description}</td>
                     <td>{product.externalLink}</td>
                     <td>{product.category ? <Link to={`category/${product.category.id}`}>{product.category.name}</Link> : ''}</td>
-                    <td>{product.room ? <Link to={`room/${product.room.id}`}>{product.room.name}</Link> : ''}</td>
+                    <td>{product.seller ? <Link to={`seller/${product.seller.id}`}>{product.seller.name}</Link> : ''}</td>
                     <td className="text-right">
                       <div className="btn-group flex-btn-group-container">
                         <Button tag={Link} to={`${match.url}/${product.id}`} color="info" size="sm" data-cy="entityDetailsButton">

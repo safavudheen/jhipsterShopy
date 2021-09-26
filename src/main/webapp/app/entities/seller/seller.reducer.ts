@@ -3,9 +3,9 @@ import { createAsyncThunk, isFulfilled, isPending, isRejected } from '@reduxjs/t
 
 import { cleanEntity } from 'app/shared/util/entity-utils';
 import { IQueryParams, createEntitySlice, EntityState, serializeAxiosError } from 'app/shared/reducers/reducer.utils';
-import { IRoom, defaultValue } from 'app/shared/model/room.model';
+import { ISeller, defaultValue } from 'app/shared/model/seller.model';
 
-const initialState: EntityState<IRoom> = {
+const initialState: EntityState<ISeller> = {
   loading: false,
   errorMessage: null,
   entities: [],
@@ -14,28 +14,28 @@ const initialState: EntityState<IRoom> = {
   updateSuccess: false,
 };
 
-const apiUrl = 'api/rooms';
+const apiUrl = 'api/sellers';
 
 // Actions
 
-export const getEntities = createAsyncThunk('room/fetch_entity_list', async ({ page, size, sort }: IQueryParams) => {
+export const getEntities = createAsyncThunk('seller/fetch_entity_list', async ({ page, size, sort }: IQueryParams) => {
   const requestUrl = `${apiUrl}?cacheBuster=${new Date().getTime()}`;
-  return axios.get<IRoom[]>(requestUrl);
+  return axios.get<ISeller[]>(requestUrl);
 });
 
 export const getEntity = createAsyncThunk(
-  'room/fetch_entity',
+  'seller/fetch_entity',
   async (id: string | number) => {
     const requestUrl = `${apiUrl}/${id}`;
-    return axios.get<IRoom>(requestUrl);
+    return axios.get<ISeller>(requestUrl);
   },
   { serializeError: serializeAxiosError }
 );
 
 export const createEntity = createAsyncThunk(
-  'room/create_entity',
-  async (entity: IRoom, thunkAPI) => {
-    const result = await axios.post<IRoom>(apiUrl, cleanEntity(entity));
+  'seller/create_entity',
+  async (entity: ISeller, thunkAPI) => {
+    const result = await axios.post<ISeller>(apiUrl, cleanEntity(entity));
     thunkAPI.dispatch(getEntities({}));
     return result;
   },
@@ -43,9 +43,9 @@ export const createEntity = createAsyncThunk(
 );
 
 export const updateEntity = createAsyncThunk(
-  'room/update_entity',
-  async (entity: IRoom, thunkAPI) => {
-    const result = await axios.put<IRoom>(`${apiUrl}/${entity.id}`, cleanEntity(entity));
+  'seller/update_entity',
+  async (entity: ISeller, thunkAPI) => {
+    const result = await axios.put<ISeller>(`${apiUrl}/${entity.id}`, cleanEntity(entity));
     thunkAPI.dispatch(getEntities({}));
     return result;
   },
@@ -53,9 +53,9 @@ export const updateEntity = createAsyncThunk(
 );
 
 export const partialUpdateEntity = createAsyncThunk(
-  'room/partial_update_entity',
-  async (entity: IRoom, thunkAPI) => {
-    const result = await axios.patch<IRoom>(`${apiUrl}/${entity.id}`, cleanEntity(entity));
+  'seller/partial_update_entity',
+  async (entity: ISeller, thunkAPI) => {
+    const result = await axios.patch<ISeller>(`${apiUrl}/${entity.id}`, cleanEntity(entity));
     thunkAPI.dispatch(getEntities({}));
     return result;
   },
@@ -63,10 +63,10 @@ export const partialUpdateEntity = createAsyncThunk(
 );
 
 export const deleteEntity = createAsyncThunk(
-  'room/delete_entity',
+  'seller/delete_entity',
   async (id: string | number, thunkAPI) => {
     const requestUrl = `${apiUrl}/${id}`;
-    const result = await axios.delete<IRoom>(requestUrl);
+    const result = await axios.delete<ISeller>(requestUrl);
     thunkAPI.dispatch(getEntities({}));
     return result;
   },
@@ -75,8 +75,8 @@ export const deleteEntity = createAsyncThunk(
 
 // slice
 
-export const RoomSlice = createEntitySlice({
-  name: 'room',
+export const SellerSlice = createEntitySlice({
+  name: 'seller',
   initialState,
   extraReducers(builder) {
     builder
@@ -115,7 +115,7 @@ export const RoomSlice = createEntitySlice({
   },
 });
 
-export const { reset } = RoomSlice.actions;
+export const { reset } = SellerSlice.actions;
 
 // Reducer
-export default RoomSlice.reducer;
+export default SellerSlice.reducer;

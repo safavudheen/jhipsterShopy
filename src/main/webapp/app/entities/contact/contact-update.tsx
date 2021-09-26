@@ -4,8 +4,8 @@ import { Button, Row, Col, FormText } from 'reactstrap';
 import { isNumber, Translate, translate, ValidatedField, ValidatedForm } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { IRoom } from 'app/shared/model/room.model';
-import { getEntities as getRooms } from 'app/entities/room/room.reducer';
+import { ISeller } from 'app/shared/model/seller.model';
+import { getEntities as getSellers } from 'app/entities/seller/seller.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './contact.reducer';
 import { IContact } from 'app/shared/model/contact.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
@@ -17,7 +17,7 @@ export const ContactUpdate = (props: RouteComponentProps<{ id: string }>) => {
 
   const [isNew] = useState(!props.match.params || !props.match.params.id);
 
-  const rooms = useAppSelector(state => state.room.entities);
+  const sellers = useAppSelector(state => state.seller.entities);
   const contactEntity = useAppSelector(state => state.contact.entity);
   const loading = useAppSelector(state => state.contact.loading);
   const updating = useAppSelector(state => state.contact.updating);
@@ -34,7 +34,7 @@ export const ContactUpdate = (props: RouteComponentProps<{ id: string }>) => {
       dispatch(getEntity(props.match.params.id));
     }
 
-    dispatch(getRooms({}));
+    dispatch(getSellers({}));
   }, []);
 
   useEffect(() => {

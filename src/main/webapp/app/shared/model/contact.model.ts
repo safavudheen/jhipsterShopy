@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { IRoom } from 'app/shared/model/room.model';
+import { ISeller } from 'app/shared/model/seller.model';
 
 export interface IContact {
   id?: number;
@@ -18,7 +18,7 @@ export interface IContact {
   createdBy?: string | null;
   lastModifiedBy?: string | null;
   isDeleted?: boolean | null;
-  room?: IRoom | null;
+  seller?: ISeller | null;
 }
 
 export const defaultValue: Readonly<IContact> = {

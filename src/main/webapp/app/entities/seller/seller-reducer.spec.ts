@@ -4,9 +4,9 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import sinon from 'sinon';
 
-import reducer, { createEntity, deleteEntity, getEntities, getEntity, updateEntity, partialUpdateEntity, reset } from './room.reducer';
+import reducer, { createEntity, deleteEntity, getEntities, getEntity, updateEntity, partialUpdateEntity, reset } from './seller.reducer';
 import { EntityState } from 'app/shared/reducers/reducer.utils';
-import { IRoom, defaultValue } from 'app/shared/model/room.model';
+import { ISeller, defaultValue } from 'app/shared/model/seller.model';
 
 describe('Entities reducer tests', () => {
   function isEmpty(element): boolean {
@@ -17,7 +17,7 @@ describe('Entities reducer tests', () => {
     }
   }
 
-  const initialState: EntityState<IRoom> = {
+  const initialState: EntityState<ISeller> = {
     loading: false,
     errorMessage: null,
     entities: [],

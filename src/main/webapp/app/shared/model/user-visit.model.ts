@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { IRoom } from 'app/shared/model/room.model';
+import { ISeller } from 'app/shared/model/seller.model';
 
 export interface IUserVisit {
   id?: number;
@@ -10,7 +10,7 @@ export interface IUserVisit {
   createdBy?: string | null;
   lastModifiedBy?: string | null;
   isDeleted?: boolean | null;
-  room?: IRoom | null;
+  seller?: ISeller | null;
 }
 
 export const defaultValue: Readonly<IUserVisit> = {
