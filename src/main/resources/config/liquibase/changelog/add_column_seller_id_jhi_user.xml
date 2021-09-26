@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <changeSet id="add_column_seller_id_jhi_user" author="busifrog">
+        <addColumn tableName="jhi_user">
+            <column name="seller_id" type="bigint">
+               <constraints nullable="true" />
+            </column>
+        </addColumn>
+
+        <addForeignKeyConstraint baseColumnNames="seller_id"
+                                 baseTableName="jhi_user"
+                                 constraintName="fk_jhi_user__seller_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="seller"/>
+    </changeSet>
+</databaseChangeLog>

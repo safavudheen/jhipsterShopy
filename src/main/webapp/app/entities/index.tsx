@@ -1,9 +1,11 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
+// import { useAppSelector } from 'app/config/store';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import ErrorBoundaryRoute from 'app/shared/error/error-boundary-route';
-
+// import { AUTHORITIES } from 'app/config/constants';
+// import { hasAnyAuthority } from 'app/shared/auth/private-route';
 import SellerPlan from './seller-plan';
 import Seller from './seller';
 import Contact from './contact';
@@ -12,6 +14,9 @@ import Product from './product';
 import Service from './service';
 import UserVisit from './user-visit';
 /* jhipster-needle-add-route-import - JHipster will add routes here */
+
+// const account = useAppSelector(state => state.authentication.account);
+// const isAdmin = hasAnyAuthority(account.authorities, [AUTHORITIES.ADMIN]);
 
 const Routes = ({ match }) => (
   <div>

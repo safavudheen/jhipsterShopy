@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity UserVisit.
+    -->
+    <changeSet id="20210926183002_update_user_authorities" author="busifrog">
+        <sql>
+            INSERT INTO jhi_authority(name) VALUES ('ROLE_SELLER_ADMIN'), ('ROLE_CUSTOMER');
+            UPDATE jhi_user_authority SET authority_name='ROLE_SELLER_ADMIN' WHERE authority_name='ROLE_OWNER';
+            DELETE FROM jhi_authority where name='ROLE_OWNER';
+        </sql>
+    </changeSet>
+</databaseChangeLog>

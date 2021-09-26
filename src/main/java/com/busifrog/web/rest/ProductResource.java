@@ -2,6 +2,9 @@ package com.busifrog.web.rest;
 
 import com.busifrog.domain.Product;
 import com.busifrog.repository.ProductRepository;
+import com.busifrog.security.AuthoritiesConstants;
+import com.busifrog.security.SecurityUtils;
+import com.busifrog.service.UserService;
 import com.busifrog.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -16,7 +19,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -42,15 +44,19 @@ public class ProductResource {
 
     private final ProductRepository productRepository;
 
-    public ProductResource(ProductRepository productRepository) {
+    private final UserService userService;
+
+    public ProductResource(ProductRepository productRepository, UserService userService) {
         this.productRepository = productRepository;
+        this.userService = userService;
     }
 
     /**
      * {@code POST  /products} : Create a new product.
      *
      * @param product the product to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new product, or with status {@code 400 (Bad Request)} if the product has already an ID.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new product,
+     * or with status {@code 400 (Bad Request)} if the product has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/products")
@@ -188,8 +194,12 @@ public class ProductResource {
      */
     @GetMapping("/products")
     public ResponseEntity<List<Product>> getAllProducts(Pageable pageable) {
-        log.debug("REST request to get a page of Products");
-        Page<Product> page = productRepository.findAll(pageable);
+        Page<Product> page;
+        if (SecurityUtils.hasCurrentUserThisAuthority(AuthoritiesConstants.SELLER_ADMIN)) {
+            page = productRepository.findAllBySellerId(userService.getCurrentUser().getSellerId(), pageable);
+        } else {
+            page = productRepository.findAll(pageable);
+        }
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
@@ -212,7 +222,8 @@ public class ProductResource {
      * {@code GET  /products/:id} : get the "id" product.
      *
      * @param id the id of the product to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the product, or with status {@code 404 (Not Found)}.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the product, or with status
+     * {@code 404 (Not Found)}.
      */
     @GetMapping("/products/{id}")
     public ResponseEntity<Product> getProduct(@PathVariable Long id) {

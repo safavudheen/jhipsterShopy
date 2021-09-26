@@ -2,6 +2,9 @@ package com.busifrog.web.rest;
 
 import com.busifrog.domain.Seller;
 import com.busifrog.repository.SellerRepository;
+import com.busifrog.security.AuthoritiesConstants;
+import com.busifrog.security.SecurityUtils;
+import com.busifrog.service.UserService;
 import com.busifrog.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -13,7 +16,6 @@ import javax.validation.constraints.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -37,8 +39,11 @@ public class SellerResource {
 
     private final SellerRepository sellerRepository;
 
-    public SellerResource(SellerRepository sellerRepository) {
+    private final UserService userService;
+
+    public SellerResource(SellerRepository sellerRepository, UserService userService) {
         this.sellerRepository = sellerRepository;
+        this.userService = userService;
     }
 
     /**
@@ -186,6 +191,9 @@ public class SellerResource {
     @GetMapping("/sellers")
     public List<Seller> getAllSellers() {
         log.debug("REST request to get all Sellers");
+        if (SecurityUtils.hasCurrentUserThisAuthority(AuthoritiesConstants.SELLER_ADMIN)) {
+            return sellerRepository.findAllById(userService.getCurrentUser().getSellerId());
+        }
         return sellerRepository.findAll();
     }
 
