@@ -193,7 +193,7 @@ public class ServiceResource {
     public ResponseEntity<List<Service>> getAllServices(Pageable pageable) {
         log.debug("REST request to get a page of Services");
         Page<Service> page;
-        if (SecurityUtils.hasCurrentUserThisAuthority(AuthoritiesConstants.OWNER)) {
+        if (SecurityUtils.hasCurrentUserThisAuthority(AuthoritiesConstants.SELLER_ADMIN)) {
             page = serviceRepository.findAllBySellerId(userService.getCurrentUser().getSellerId(), pageable);
         } else {
             page = serviceRepository.findAll(pageable);

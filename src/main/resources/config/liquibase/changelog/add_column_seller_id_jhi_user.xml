@@ -6,21 +6,18 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    
-    <changeSet id="add_column_room_id_jhi_user" author="busifrog">
-        <addColumn 
-            schemaName="public"
-            tableName="jhi_user">
-        <column name="room_id" type="bigint">
-           <constraints nullable="true" />
-        </column>
-        </addColumn>
-        
 
-        <addForeignKeyConstraint baseColumnNames="room_id"
+    <changeSet id="add_column_seller_id_jhi_user" author="busifrog">
+        <addColumn tableName="jhi_user">
+            <column name="seller_id" type="bigint">
+               <constraints nullable="true" />
+            </column>
+        </addColumn>
+
+        <addForeignKeyConstraint baseColumnNames="seller_id"
                                  baseTableName="jhi_user"
-                                 constraintName="fk_jhi_user__room_id"
+                                 constraintName="fk_jhi_user__seller_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="room"/>
-    </changeSet>                
+                                 referencedTableName="seller"/>
+    </changeSet>
 </databaseChangeLog>

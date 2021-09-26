@@ -55,7 +55,8 @@ public class ProductResource {
      * {@code POST  /products} : Create a new product.
      *
      * @param product the product to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new product, or with status {@code 400 (Bad Request)} if the product has already an ID.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new product,
+     * or with status {@code 400 (Bad Request)} if the product has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/products")
@@ -194,7 +195,7 @@ public class ProductResource {
     @GetMapping("/products")
     public ResponseEntity<List<Product>> getAllProducts(Pageable pageable) {
         Page<Product> page;
-        if (SecurityUtils.hasCurrentUserThisAuthority(AuthoritiesConstants.OWNER)) {
+        if (SecurityUtils.hasCurrentUserThisAuthority(AuthoritiesConstants.SELLER_ADMIN)) {
             page = productRepository.findAllBySellerId(userService.getCurrentUser().getSellerId(), pageable);
         } else {
             page = productRepository.findAll(pageable);
@@ -221,7 +222,8 @@ public class ProductResource {
      * {@code GET  /products/:id} : get the "id" product.
      *
      * @param id the id of the product to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the product, or with status {@code 404 (Not Found)}.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the product, or with status
+     * {@code 404 (Not Found)}.
      */
     @GetMapping("/products/{id}")
     public ResponseEntity<Product> getProduct(@PathVariable Long id) {

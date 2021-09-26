@@ -3,11 +3,11 @@ package com.busifrog.service;
 import com.busifrog.config.Constants;
 import com.busifrog.domain.Authority;
 import com.busifrog.domain.Contact;
-import com.busifrog.domain.Room;
+import com.busifrog.domain.Seller;
 import com.busifrog.domain.User;
 import com.busifrog.repository.AuthorityRepository;
 import com.busifrog.repository.ContactRepository;
-import com.busifrog.repository.RoomRepository;
+import com.busifrog.repository.SellerRepository;
 import com.busifrog.repository.UserRepository;
 import com.busifrog.security.AuthoritiesConstants;
 import com.busifrog.security.SecurityUtils;
@@ -39,7 +39,7 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    private final RoomRepository roomRepository;
+    private final SellerRepository sellerRepository;
 
     private final ContactRepository contactRepository;
 
@@ -51,14 +51,14 @@ public class UserService {
 
     public UserService(
         UserRepository userRepository,
-        RoomRepository roomRepository,
+        SellerRepository sellerRepository,
         ContactRepository contactRepository,
         PasswordEncoder passwordEncoder,
         AuthorityRepository authorityRepository,
         CacheManager cacheManager
     ) {
         this.userRepository = userRepository;
-        this.roomRepository = roomRepository;
+        this.sellerRepository = sellerRepository;
         this.contactRepository = contactRepository;
         this.passwordEncoder = passwordEncoder;
         this.authorityRepository = authorityRepository;
@@ -143,11 +143,11 @@ public class UserService {
         if (isOwner) {
             Contact contact = new Contact();
             Contact savedContact = contactRepository.save(contact);
-            Room newRoom = new Room();
-            newRoom.setName("Enter your company name");
-            newRoom.setContact(savedContact);
-            Room result = roomRepository.save(newRoom);
-            newUser.setRoomId(result.getId());
+            Seller newSeller = new Seller();
+            newSeller.setName("Enter your company name");
+            newSeller.setContact(savedContact);
+            Seller result = sellerRepository.save(newSeller);
+            newUser.setSellerId(result.getId());
         }
         if (userDTO.getEmail() != null) {
             newUser.setEmail(userDTO.getEmail().toLowerCase());
@@ -159,7 +159,7 @@ public class UserService {
         // new user gets registration key
         //        newUser.setActivationKey(RandomUtil.generateActivationKey());
         Set<Authority> authorities = new HashSet<>();
-        if (isOwner) authorityRepository.findById(AuthoritiesConstants.OWNER).ifPresent(authorities::add); else authorityRepository
+        if (isOwner) authorityRepository.findById(AuthoritiesConstants.SELLER_ADMIN).ifPresent(authorities::add); else authorityRepository
             .findById(AuthoritiesConstants.USER)
             .ifPresent(authorities::add);
 

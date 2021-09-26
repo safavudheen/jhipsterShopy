@@ -195,7 +195,7 @@ public class ContactResource {
      */
     @GetMapping("/contacts")
     public List<Contact> getAllContacts(@RequestParam(required = false) String filter) {
-        if (SecurityUtils.hasCurrentUserThisAuthority(AuthoritiesConstants.OWNER)) {
+        if (SecurityUtils.hasCurrentUserThisAuthority(AuthoritiesConstants.SELLER_ADMIN)) {
             return contactRepository.findAllBySellerId(userService.getCurrentUser().getSellerId());
         }
         if ("seller-is-null".equals(filter)) {

@@ -77,8 +77,10 @@ public class SellerResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/sellers/{id}")
-    public ResponseEntity<Seller> updateSeller(@PathVariable(value = "id", required = false) final Long id, @Valid @RequestBody Seller seller)
-        throws URISyntaxException {
+    public ResponseEntity<Seller> updateSeller(
+        @PathVariable(value = "id", required = false) final Long id,
+        @Valid @RequestBody Seller seller
+    ) throws URISyntaxException {
         log.debug("REST request to update Seller : {}, {}", id, seller);
         if (seller.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
@@ -189,7 +191,7 @@ public class SellerResource {
     @GetMapping("/sellers")
     public List<Seller> getAllSellers() {
         log.debug("REST request to get all Sellers");
-        if (SecurityUtils.hasCurrentUserThisAuthority(AuthoritiesConstants.OWNER)) {
+        if (SecurityUtils.hasCurrentUserThisAuthority(AuthoritiesConstants.SELLER_ADMIN)) {
             return sellerRepository.findAllById(userService.getCurrentUser().getSellerId());
         }
         return sellerRepository.findAll();

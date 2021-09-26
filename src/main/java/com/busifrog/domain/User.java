@@ -2,7 +2,6 @@ package com.busifrog.domain;
 
 import com.busifrog.config.Constants;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashSet;
@@ -83,8 +82,8 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "reset_date")
     private Instant resetDate = null;
 
-    @Column(name = "room_id")
-    private Long roomId;
+    @Column(name = "seller_id")
+    private Long sellerId;
 
     @JsonIgnore
     @ManyToMany
@@ -234,11 +233,11 @@ public class User extends AbstractAuditingEntity implements Serializable {
             "}";
     }
 
-    public Long getRoomId() {
-        return roomId;
+    public Long getSellerId() {
+        return sellerId;
     }
 
-    public void setRoomId(Long roomId) {
-        this.roomId = roomId;
+    public void setSellerId(Long sellerId) {
+        this.sellerId = sellerId;
     }
 }
