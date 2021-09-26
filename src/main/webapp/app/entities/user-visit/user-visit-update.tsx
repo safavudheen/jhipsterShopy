@@ -4,8 +4,8 @@ import { Button, Row, Col, FormText } from 'reactstrap';
 import { isNumber, Translate, translate, ValidatedField, ValidatedForm } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { IRoom } from 'app/shared/model/room.model';
-import { getEntities as getRooms } from 'app/entities/room/room.reducer';
+import { ISeller } from 'app/shared/model/seller.model';
+import { getEntities as getSellers } from 'app/entities/seller/seller.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './user-visit.reducer';
 import { IUserVisit } from 'app/shared/model/user-visit.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
@@ -17,7 +17,7 @@ export const UserVisitUpdate = (props: RouteComponentProps<{ id: string }>) => {
 
   const [isNew] = useState(!props.match.params || !props.match.params.id);
 
-  const rooms = useAppSelector(state => state.room.entities);
+  const sellers = useAppSelector(state => state.seller.entities);
   const userVisitEntity = useAppSelector(state => state.userVisit.entity);
   const loading = useAppSelector(state => state.userVisit.loading);
   const updating = useAppSelector(state => state.userVisit.updating);
@@ -34,7 +34,7 @@ export const UserVisitUpdate = (props: RouteComponentProps<{ id: string }>) => {
       dispatch(getEntity(props.match.params.id));
     }
 
-    dispatch(getRooms({}));
+    dispatch(getSellers({}));
   }, []);
 
   useEffect(() => {
@@ -52,7 +52,7 @@ export const UserVisitUpdate = (props: RouteComponentProps<{ id: string }>) => {
     const entity = {
       ...userVisitEntity,
       ...values,
-      room: rooms.find(it => it.id.toString() === values.roomId.toString()),
+      seller: sellers.find(it => it.id.toString() === values.sellerId.toString()),
     };
 
     if (isNew) {
@@ -76,7 +76,7 @@ export const UserVisitUpdate = (props: RouteComponentProps<{ id: string }>) => {
           endDate: convertDateTimeFromServer(userVisitEntity.endDate),
           createdDate: convertDateTimeFromServer(userVisitEntity.createdDate),
           lastModifiedDate: convertDateTimeFromServer(userVisitEntity.lastModifiedDate),
-          roomId: userVisitEntity?.room?.id,
+          sellerId: userVisitEntity?.seller?.id,
         };
 
   return (
@@ -159,15 +159,15 @@ export const UserVisitUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 type="checkbox"
               />
               <ValidatedField
-                id="user-visit-room"
-                name="roomId"
-                data-cy="room"
-                label={translate('busifrogApp.userVisit.room')}
+                id="user-visit-seller"
+                name="sellerId"
+                data-cy="seller"
+                label={translate('busifrogApp.userVisit.seller')}
                 type="select"
               >
                 <option value="" key="0" />
-                {rooms
-                  ? rooms.map(otherEntity => (
+                {sellers
+                  ? sellers.map(otherEntity => (
                       <option value={otherEntity.id} key={otherEntity.id}>
                         {otherEntity.id}
                       </option>

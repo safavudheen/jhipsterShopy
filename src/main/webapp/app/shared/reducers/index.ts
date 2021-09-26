@@ -14,7 +14,7 @@ import passwordReset, { PasswordResetState } from 'app/modules/account/password-
 // prettier-ignore
 import sellerPlan from 'app/entities/seller-plan/seller-plan.reducer';
 // prettier-ignore
-import room from 'app/entities/room/room.reducer';
+import seller from 'app/entities/seller/seller.reducer';
 // prettier-ignore
 import contact from 'app/entities/contact/contact.reducer';
 // prettier-ignore
@@ -39,7 +39,7 @@ const rootReducer = {
   password,
   settings,
   sellerPlan,
-  room,
+  seller,
   contact,
   category,
   product,

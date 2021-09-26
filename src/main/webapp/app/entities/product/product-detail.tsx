@@ -76,9 +76,9 @@ export const ProductDetail = (props: RouteComponentProps<{ id: string }>) => {
           </dt>
           <dd>{productEntity.category ? productEntity.category.name : ''}</dd>
           <dt>
-            <Translate contentKey="busifrogApp.product.room">Room</Translate>
+            <Translate contentKey="busifrogApp.product.seller">Seller</Translate>
           </dt>
-          <dd>{productEntity.room ? productEntity.room.name : ''}</dd>
+          <dd>{productEntity.seller ? productEntity.seller.name : ''}</dd>
         </dl>
         <Button tag={Link} to="/product" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

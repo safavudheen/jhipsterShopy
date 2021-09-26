@@ -5,20 +5,20 @@ import { Translate } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { useAppDispatch, useAppSelector } from 'app/config/store';
-import { getEntity, deleteEntity } from './room.reducer';
+import { getEntity, deleteEntity } from './seller.reducer';
 
-export const RoomDeleteDialog = (props: RouteComponentProps<{ id: string }>) => {
+export const SellerDeleteDialog = (props: RouteComponentProps<{ id: string }>) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(getEntity(props.match.params.id));
   }, []);
 
-  const roomEntity = useAppSelector(state => state.room.entity);
-  const updateSuccess = useAppSelector(state => state.room.updateSuccess);
+  const sellerEntity = useAppSelector(state => state.seller.entity);
+  const updateSuccess = useAppSelector(state => state.seller.updateSuccess);
 
   const handleClose = () => {
-    props.history.push('/room');
+    props.history.push('/seller');
   };
 
   useEffect(() => {
@@ -28,17 +28,17 @@ export const RoomDeleteDialog = (props: RouteComponentProps<{ id: string }>) => 
   }, [updateSuccess]);
 
   const confirmDelete = () => {
-    dispatch(deleteEntity(roomEntity.id));
+    dispatch(deleteEntity(sellerEntity.id));
   };
 
   return (
     <Modal isOpen toggle={handleClose}>
-      <ModalHeader toggle={handleClose} data-cy="roomDeleteDialogHeading">
+      <ModalHeader toggle={handleClose} data-cy="sellerDeleteDialogHeading">
         <Translate contentKey="entity.delete.title">Confirm delete operation</Translate>
       </ModalHeader>
-      <ModalBody id="busifrogApp.room.delete.question">
-        <Translate contentKey="busifrogApp.room.delete.question" interpolate={{ id: roomEntity.id }}>
-          Are you sure you want to delete this Room?
+      <ModalBody id="busifrogApp.seller.delete.question">
+        <Translate contentKey="busifrogApp.seller.delete.question" interpolate={{ id: sellerEntity.id }}>
+          Are you sure you want to delete this Seller?
         </Translate>
       </ModalBody>
       <ModalFooter>
@@ -47,7 +47,7 @@ export const RoomDeleteDialog = (props: RouteComponentProps<{ id: string }>) => 
           &nbsp;
           <Translate contentKey="entity.action.cancel">Cancel</Translate>
         </Button>
-        <Button id="jhi-confirm-delete-room" data-cy="entityConfirmDeleteButton" color="danger" onClick={confirmDelete}>
+        <Button id="jhi-confirm-delete-seller" data-cy="entityConfirmDeleteButton" color="danger" onClick={confirmDelete}>
           <FontAwesomeIcon icon="trash" />
           &nbsp;
           <Translate contentKey="entity.action.delete">Delete</Translate>
@@ -57,4 +57,4 @@ export const RoomDeleteDialog = (props: RouteComponentProps<{ id: string }>) => 
   );
 };
 
-export default RoomDeleteDialog;
+export default SellerDeleteDialog;

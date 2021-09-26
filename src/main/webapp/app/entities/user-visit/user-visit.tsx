@@ -126,7 +126,7 @@ export const UserVisit = (props: RouteComponentProps<{ url: string }>) => {
                   <Translate contentKey="busifrogApp.userVisit.isDeleted">Is Deleted</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th>
-                  <Translate contentKey="busifrogApp.userVisit.room">Room</Translate> <FontAwesomeIcon icon="sort" />
+                  <Translate contentKey="busifrogApp.userVisit.seller">Seller</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th />
               </tr>
@@ -152,7 +152,7 @@ export const UserVisit = (props: RouteComponentProps<{ url: string }>) => {
                   <td>{userVisit.createdBy}</td>
                   <td>{userVisit.lastModifiedBy}</td>
                   <td>{userVisit.isDeleted ? 'true' : 'false'}</td>
-                  <td>{userVisit.room ? <Link to={`room/${userVisit.room.id}`}>{userVisit.room.id}</Link> : ''}</td>
+                  <td>{userVisit.seller ? <Link to={`seller/${userVisit.seller.id}`}>{userVisit.seller.id}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${userVisit.id}`} color="info" size="sm" data-cy="entityDetailsButton">

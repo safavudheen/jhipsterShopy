@@ -1,21 +1,21 @@
 {
   "busifrogApp": {
-    "room": {
+    "seller": {
       "home": {
-        "title": "Rooms",
+        "title": "Sellers",
         "refreshListLabel": "Refresh list",
-        "createLabel": "नया Room बनाएँ",
-        "createOrEditLabel": "Room बनाएँ या संपादित करें",
-        "notFound": "No Rooms found"
+        "createLabel": "नया Seller बनाएँ",
+        "createOrEditLabel": "Seller बनाएँ या संपादित करें",
+        "notFound": "No Sellers found"
       },
-      "created": "एक नया Room [identifier: {{ param }}] तैयार है",
-      "updated": "एक Room [identifier: {{ param }}] का अद्यतन हुआ है",
-      "deleted": "Room [identifier: {{ param }}] हटा दिया है",
+      "created": "एक नया Seller [identifier: {{ param }}] तैयार है",
+      "updated": "एक Seller [identifier: {{ param }}] का अद्यतन हुआ है",
+      "deleted": "Seller [identifier: {{ param }}] हटा दिया है",
       "delete": {
-        "question": "Room [id: {{ id }}] हटाने की पुष्टि करें"
+        "question": "Seller [id: {{ id }}] हटाने की पुष्टि करें"
       },
       "detail": {
-        "title": "Room"
+        "title": "Seller"
       },
       "id": "ID",
       "name": "Name",

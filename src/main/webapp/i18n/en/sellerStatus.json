@@ -1,6 +1,6 @@
 {
   "busifrogApp": {
-    "RoomStatus": {
+    "SellerStatus": {
       "null": "",
       "INACTIVE": "INACTIVE",
       "VERIFIED": "VERIFIED"

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity UserVisit.
+    -->
+    <changeSet id="20210926151029-1" author="busifrog">
+        <renameTable newTableName="seller" oldTableName="room" />
+    </changeSet>
+    <changeSet id="20210926151029-2" author="busifrog">
+        <renameColumn
+            columnDataType="bigint"
+            newColumnName="seller_id"
+            oldColumnName="room_id"
+            tableName="product"/>
+        <renameColumn
+            columnDataType="bigint"
+            newColumnName="seller_id"
+            oldColumnName="room_id"
+            tableName="service"/>
+    </changeSet>
+    <changeSet id="20210926151029-3" author="busifrog">
+        <renameColumn
+            columnDataType="bigint"
+            newColumnName="seller_id"
+            oldColumnName="room_id"
+            tableName="user_visit"/>
+    </changeSet>
+
+</databaseChangeLog>

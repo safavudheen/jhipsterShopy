@@ -31,4 +31,6 @@
     <include file="config/liquibase/changelog/add_new_user_authority.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20210926151029_updated_entity_Room_to_Seller.xml" relativeToChangelogFile="false"/>
+
 </databaseChangeLog>

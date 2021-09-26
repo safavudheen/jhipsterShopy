@@ -140,19 +140,20 @@ liquibase {
     activities {
         main {
             driver "org.postgresql.Driver"
-            url "jdbc:postgresql://localhost:5432/Busifrog"
-            username "Busifrog"
-            password ""
+            url "jdbc:postgresql://localhost:5432/busifrog"
+            username "busifrog"
+            password "root"
             changeLogFile "src/main/resources/config/liquibase/master.xml"
+            referenceUrl "hibernate:spring:com.busifrog.domain?dialect=tech.jhipster.domain.util.FixedPostgreSQL10Dialect&hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
             defaultSchemaName ""
             logLevel "debug"
             classpath "src/main/resources/"
         }
         diffLog {
             driver "org.postgresql.Driver"
-            url "jdbc:postgresql://localhost:5432/Busifrog"
-            username "Busifrog"
-            password ""
+            url "jdbc:postgresql://localhost:5432/busifrog"
+            username "busifrog"
+            password "root"
             changeLogFile project.ext.diffChangelogFile
             referenceUrl "hibernate:spring:com.busifrog.domain?dialect=tech.jhipster.domain.util.FixedPostgreSQL10Dialect&hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
             defaultSchemaName ""

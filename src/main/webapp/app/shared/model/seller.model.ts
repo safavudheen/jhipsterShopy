@@ -4,9 +4,9 @@ import { IProduct } from 'app/shared/model/product.model';
 import { IService } from 'app/shared/model/service.model';
 import { IUserVisit } from 'app/shared/model/user-visit.model';
 import { ISellerPlan } from 'app/shared/model/seller-plan.model';
-import { RoomStatus } from 'app/shared/model/enumerations/room-status.model';
+import { SellerStatus } from 'app/shared/model/enumerations/seller-status.model';
 
-export interface IRoom {
+export interface ISeller {
   id?: number;
   name?: string;
   logoImageUrl?: string | null;
@@ -14,7 +14,7 @@ export interface IRoom {
   latitude?: string | null;
   longitude?: string | null;
   planExpiryDate?: string | null;
-  status?: RoomStatus | null;
+  status?: SellerStatus | null;
   websiteLink?: string | null;
   createdDate?: string | null;
   lastModifiedDate?: string | null;
@@ -28,6 +28,6 @@ export interface IRoom {
   sellerPlan?: ISellerPlan | null;
 }
 
-export const defaultValue: Readonly<IRoom> = {
+export const defaultValue: Readonly<ISeller> = {
   isDeleted: false,
 };

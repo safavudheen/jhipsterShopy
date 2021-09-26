@@ -212,10 +212,10 @@ public class CategoryResource {
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
-    @GetMapping("/room/{id}/categories")
-    public ResponseEntity<List<Category>> getCategoriesByRoom(@PathVariable Long id, Pageable pageable) {
+    @GetMapping("/seller/{id}/categories")
+    public ResponseEntity<List<Category>> getCategoriesBySeller(@PathVariable Long id, Pageable pageable) {
         log.debug("REST request to get Category : {}", id);
-        Page<Category> page = categoryRepository.findAllCategoriesByRoom(id, pageable);
+        Page<Category> page = categoryRepository.findAllCategoriesBySeller(id, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

@@ -70,9 +70,9 @@ export const ServiceDetail = (props: RouteComponentProps<{ id: string }>) => {
           </dt>
           <dd>{serviceEntity.category ? serviceEntity.category.name : ''}</dd>
           <dt>
-            <Translate contentKey="busifrogApp.service.room">Room</Translate>
+            <Translate contentKey="busifrogApp.service.seller">Seller</Translate>
           </dt>
-          <dd>{serviceEntity.room ? serviceEntity.room.name : ''}</dd>
+          <dd>{serviceEntity.seller ? serviceEntity.seller.name : ''}</dd>
         </dl>
         <Button tag={Link} to="/service" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

@@ -8,26 +8,26 @@ import { IContact } from 'app/shared/model/contact.model';
 import { getEntities as getContacts } from 'app/entities/contact/contact.reducer';
 import { ISellerPlan } from 'app/shared/model/seller-plan.model';
 import { getEntities as getSellerPlans } from 'app/entities/seller-plan/seller-plan.reducer';
-import { getEntity, updateEntity, createEntity, reset } from './room.reducer';
-import { IRoom } from 'app/shared/model/room.model';
+import { getEntity, updateEntity, createEntity, reset } from './seller.reducer';
+import { ISeller } from 'app/shared/model/seller.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
 import { mapIdList } from 'app/shared/util/entity-utils';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
-export const RoomUpdate = (props: RouteComponentProps<{ id: string }>) => {
+export const SellerUpdate = (props: RouteComponentProps<{ id: string }>) => {
   const dispatch = useAppDispatch();
 
   const [isNew] = useState(!props.match.params || !props.match.params.id);
 
   const contacts = useAppSelector(state => state.contact.entities);
   const sellerPlans = useAppSelector(state => state.sellerPlan.entities);
-  const roomEntity = useAppSelector(state => state.room.entity);
-  const loading = useAppSelector(state => state.room.loading);
-  const updating = useAppSelector(state => state.room.updating);
-  const updateSuccess = useAppSelector(state => state.room.updateSuccess);
+  const sellerEntity = useAppSelector(state => state.seller.entity);
+  const loading = useAppSelector(state => state.seller.loading);
+  const updating = useAppSelector(state => state.seller.updating);
+  const updateSuccess = useAppSelector(state => state.seller.updateSuccess);
 
   const handleClose = () => {
-    props.history.push('/room');
+    props.history.push('/seller');
   };
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export const RoomUpdate = (props: RouteComponentProps<{ id: string }>) => {
     values.lastModifiedDate = convertDateTimeToServer(values.lastModifiedDate);
 
     const entity = {
-      ...roomEntity,
+      ...sellerEntity,
       ...values,
       contact: contacts.find(it => it.id.toString() === values.contactId.toString()),
       sellerPlan: sellerPlans.find(it => it.id.toString() === values.sellerPlanId.toString()),
@@ -74,21 +74,21 @@ export const RoomUpdate = (props: RouteComponentProps<{ id: string }>) => {
           lastModifiedDate: displayDefaultDateTime(),
         }
       : {
-          ...roomEntity,
-          planExpiryDate: convertDateTimeFromServer(roomEntity.planExpiryDate),
+          ...sellerEntity,
+          planExpiryDate: convertDateTimeFromServer(sellerEntity.planExpiryDate),
           status: 'INACTIVE',
-          createdDate: convertDateTimeFromServer(roomEntity.createdDate),
-          lastModifiedDate: convertDateTimeFromServer(roomEntity.lastModifiedDate),
-          contactId: roomEntity?.contact?.id,
-          sellerPlanId: roomEntity?.sellerPlan?.id,
+          createdDate: convertDateTimeFromServer(sellerEntity.createdDate),
+          lastModifiedDate: convertDateTimeFromServer(sellerEntity.lastModifiedDate),
+          contactId: sellerEntity?.contact?.id,
+          sellerPlanId: sellerEntity?.sellerPlan?.id,
         };
 
   return (
     <div>
       <Row className="justify-content-center">
         <Col md="8">
-          <h2 id="busifrogApp.room.home.createOrEditLabel" data-cy="RoomCreateUpdateHeading">
-            <Translate contentKey="busifrogApp.room.home.createOrEditLabel">Create or edit a Room</Translate>
+          <h2 id="busifrogApp.seller.home.createOrEditLabel" data-cy="SellerCreateUpdateHeading">
+            <Translate contentKey="busifrogApp.seller.home.createOrEditLabel">Create or edit a Seller</Translate>
           </h2>
         </Col>
       </Row>
@@ -103,14 +103,14 @@ export const RoomUpdate = (props: RouteComponentProps<{ id: string }>) => {
                   name="id"
                   required
                   readOnly
-                  id="room-id"
+                  id="seller-id"
                   label={translate('global.field.id')}
                   validate={{ required: true }}
                 />
               ) : null}
               <ValidatedField
-                label={translate('busifrogApp.room.name')}
-                id="room-name"
+                label={translate('busifrogApp.seller.name')}
+                id="seller-name"
                 name="name"
                 data-cy="name"
                 type="text"
@@ -119,57 +119,63 @@ export const RoomUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 }}
               />
               <ValidatedField
-                label={translate('busifrogApp.room.logoImageUrl')}
-                id="room-logoImageUrl"
+                label={translate('busifrogApp.seller.logoImageUrl')}
+                id="seller-logoImageUrl"
                 name="logoImageUrl"
                 data-cy="logoImageUrl"
                 type="text"
               />
               <ValidatedField
-                label={translate('busifrogApp.room.pincode')}
-                id="room-pincode"
+                label={translate('busifrogApp.seller.pincode')}
+                id="seller-pincode"
                 name="pincode"
                 data-cy="pincode"
                 type="text"
               />
               <ValidatedField
-                label={translate('busifrogApp.room.latitude')}
-                id="room-latitude"
+                label={translate('busifrogApp.seller.latitude')}
+                id="seller-latitude"
                 name="latitude"
                 data-cy="latitude"
                 type="text"
               />
               <ValidatedField
-                label={translate('busifrogApp.room.longitude')}
-                id="room-longitude"
+                label={translate('busifrogApp.seller.longitude')}
+                id="seller-longitude"
                 name="longitude"
                 data-cy="longitude"
                 type="text"
               />
               <ValidatedField
-                label={translate('busifrogApp.room.planExpiryDate')}
-                id="room-planExpiryDate"
+                label={translate('busifrogApp.seller.planExpiryDate')}
+                id="seller-planExpiryDate"
                 name="planExpiryDate"
                 data-cy="planExpiryDate"
                 type="datetime-local"
                 placeholder="YYYY-MM-DD HH:mm"
               />
-              <ValidatedField label={translate('busifrogApp.room.status')} id="room-status" name="status" data-cy="status" type="select">
-                <option value="INACTIVE">{translate('busifrogApp.RoomStatus.INACTIVE')}</option>
-                <option value="VERIFIED">{translate('busifrogApp.RoomStatus.VERIFIED')}</option>
+              <ValidatedField
+                label={translate('busifrogApp.seller.status')}
+                id="seller-status"
+                name="status"
+                data-cy="status"
+                type="select"
+              >
+                <option value="INACTIVE">{translate('busifrogApp.SellerStatus.INACTIVE')}</option>
+                <option value="VERIFIED">{translate('busifrogApp.SellerStatus.VERIFIED')}</option>
               </ValidatedField>
               <ValidatedField
-                label={translate('busifrogApp.room.websiteLink')}
-                id="room-websiteLink"
+                label={translate('busifrogApp.seller.websiteLink')}
+                id="seller-websiteLink"
                 name="websiteLink"
                 data-cy="websiteLink"
                 type="text"
               />
               <ValidatedField
-                id="room-contact"
+                id="seller-contact"
                 name="contactId"
                 data-cy="contact"
-                label={translate('busifrogApp.room.contact')}
+                label={translate('busifrogApp.seller.contact')}
                 type="select"
               >
                 <option value="" key="0" />
@@ -182,10 +188,10 @@ export const RoomUpdate = (props: RouteComponentProps<{ id: string }>) => {
                   : null}
               </ValidatedField>
               <ValidatedField
-                id="room-sellerPlan"
+                id="seller-sellerPlan"
                 name="sellerPlanId"
                 data-cy="sellerPlan"
-                label={translate('busifrogApp.room.sellerPlan')}
+                label={translate('busifrogApp.seller.sellerPlan')}
                 type="select"
               >
                 <option value="" key="0" />
@@ -197,7 +203,7 @@ export const RoomUpdate = (props: RouteComponentProps<{ id: string }>) => {
                     ))
                   : null}
               </ValidatedField>
-              <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/room" replace color="info">
+              <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/seller" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
                 <span className="d-none d-md-inline">
@@ -218,4 +224,4 @@ export const RoomUpdate = (props: RouteComponentProps<{ id: string }>) => {
   );
 };
 
-export default RoomUpdate;
+export default SellerUpdate;

@@ -6,8 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { ICategory } from 'app/shared/model/category.model';
 import { getEntities as getCategories } from 'app/entities/category/category.reducer';
-import { IRoom } from 'app/shared/model/room.model';
-import { getEntities as getRooms } from 'app/entities/room/room.reducer';
+import { ISeller } from 'app/shared/model/seller.model';
+import { getEntities as getSellers } from 'app/entities/seller/seller.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './product.reducer';
 import { IProduct } from 'app/shared/model/product.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
@@ -20,7 +20,7 @@ export const ProductUpdate = (props: RouteComponentProps<{ id: string }>) => {
   const [isNew] = useState(!props.match.params || !props.match.params.id);
 
   const categories = useAppSelector(state => state.category.entities);
-  const rooms = useAppSelector(state => state.room.entities);
+  const sellers = useAppSelector(state => state.seller.entities);
   const productEntity = useAppSelector(state => state.product.entity);
   const loading = useAppSelector(state => state.product.loading);
   const updating = useAppSelector(state => state.product.updating);
@@ -36,7 +36,7 @@ export const ProductUpdate = (props: RouteComponentProps<{ id: string }>) => {
     }
 
     dispatch(getCategories({}));
-    dispatch(getRooms({}));
+    dispatch(getSellers({}));
   }, []);
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export const ProductUpdate = (props: RouteComponentProps<{ id: string }>) => {
       ...productEntity,
       ...values,
       category: categories.find(it => it.id.toString() === values.categoryId.toString()),
-      room: rooms.find(it => it.id.toString() === values.roomId.toString()),
+      seller: sellers.find(it => it.id.toString() === values.sellerId.toString()),
     };
 
     if (isNew) {
@@ -74,7 +74,7 @@ export const ProductUpdate = (props: RouteComponentProps<{ id: string }>) => {
           createdDate: convertDateTimeFromServer(productEntity.createdDate),
           lastModifiedDate: convertDateTimeFromServer(productEntity.lastModifiedDate),
           categoryId: productEntity?.category?.id,
-          roomId: productEntity?.room?.id,
+          sellerId: productEntity?.seller?.id,
         };
 
   return (
@@ -172,16 +172,16 @@ export const ProductUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 <Translate contentKey="entity.validation.required">This field is required.</Translate>
               </FormText>
               <ValidatedField
-                id="product-room"
-                name="roomId"
-                data-cy="room"
-                label={translate('busifrogApp.product.room')}
+                id="product-seller"
+                name="sellerId"
+                data-cy="seller"
+                label={translate('busifrogApp.product.seller')}
                 type="select"
                 required
               >
                 <option value="" key="0" />
-                {rooms
-                  ? rooms.map(otherEntity => (
+                {sellers
+                  ? sellers.map(otherEntity => (
                       <option value={otherEntity.id} key={otherEntity.id}>
                         {otherEntity.name}
                       </option>

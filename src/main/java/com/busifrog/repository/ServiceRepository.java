@@ -12,8 +12,8 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface ServiceRepository extends JpaRepository<Service, Long> {
-    @Query(value = "select * from service s where s.room_id =?1", nativeQuery = true)
-    Page<Service> findAllByRoomId(Long roomId, Pageable pageable);
+    @Query(value = "select * from service s where s.seller_id =?1", nativeQuery = true)
+    Page<Service> findAllBySellerId(Long sellerId, Pageable pageable);
 
     @Query(value = "select * from service s where s.category_id =?1", nativeQuery = true)
     Page<Service> findAllByCategoryId(Long categoryId, Pageable pageable);

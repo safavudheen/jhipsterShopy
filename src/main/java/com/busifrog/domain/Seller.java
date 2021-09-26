@@ -1,6 +1,6 @@
 package com.busifrog.domain;
 
-import com.busifrog.domain.enumeration.RoomStatus;
+import com.busifrog.domain.enumeration.SellerStatus;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.time.Instant;
@@ -12,12 +12,12 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
- * A Room.
+ * A Seller.
  */
 @Entity
-@Table(name = "room")
+@Table(name = "seller")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class Room extends AbstractAuditingEntity implements Serializable {
+public class Seller extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -47,7 +47,7 @@ public class Room extends AbstractAuditingEntity implements Serializable {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private RoomStatus status;
+    private SellerStatus status;
 
     @Column(name = "website_link")
     private String websiteLink;
@@ -55,24 +55,24 @@ public class Room extends AbstractAuditingEntity implements Serializable {
     @Column(name = "is_deleted")
     private Boolean isDeleted = false;
 
-    @JsonIgnoreProperties(value = { "room" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "seller" }, allowSetters = true)
     @OneToOne
     @JoinColumn(unique = true)
     private Contact contact;
 
-    @OneToMany(mappedBy = "room")
+    @OneToMany(mappedBy = "seller")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "category", "room" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "category", "seller" }, allowSetters = true)
     private Set<Product> products = new HashSet<>();
 
-    @OneToMany(mappedBy = "room")
+    @OneToMany(mappedBy = "seller")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "category", "room" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "category", "seller" }, allowSetters = true)
     private Set<Service> services = new HashSet<>();
 
-    @OneToMany(mappedBy = "room")
+    @OneToMany(mappedBy = "seller")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "room" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "seller" }, allowSetters = true)
     private Set<UserVisit> userVisits = new HashSet<>();
 
     @ManyToOne
@@ -87,7 +87,7 @@ public class Room extends AbstractAuditingEntity implements Serializable {
         this.id = id;
     }
 
-    public Room id(Long id) {
+    public Seller id(Long id) {
         this.id = id;
         return this;
     }
@@ -96,7 +96,7 @@ public class Room extends AbstractAuditingEntity implements Serializable {
         return this.name;
     }
 
-    public Room name(String name) {
+    public Seller name(String name) {
         this.name = name;
         return this;
     }
@@ -109,7 +109,7 @@ public class Room extends AbstractAuditingEntity implements Serializable {
         return this.logoImageUrl;
     }
 
-    public Room logoImageUrl(String logoImageUrl) {
+    public Seller logoImageUrl(String logoImageUrl) {
         this.logoImageUrl = logoImageUrl;
         return this;
     }
@@ -122,7 +122,7 @@ public class Room extends AbstractAuditingEntity implements Serializable {
         return this.pincode;
     }
 
-    public Room pincode(Long pincode) {
+    public Seller pincode(Long pincode) {
         this.pincode = pincode;
         return this;
     }
@@ -135,7 +135,7 @@ public class Room extends AbstractAuditingEntity implements Serializable {
         return this.latitude;
     }
 
-    public Room latitude(String latitude) {
+    public Seller latitude(String latitude) {
         this.latitude = latitude;
         return this;
     }
@@ -148,7 +148,7 @@ public class Room extends AbstractAuditingEntity implements Serializable {
         return this.longitude;
     }
 
-    public Room longitude(String longitude) {
+    public Seller longitude(String longitude) {
         this.longitude = longitude;
         return this;
     }
@@ -161,7 +161,7 @@ public class Room extends AbstractAuditingEntity implements Serializable {
         return this.planExpiryDate;
     }
 
-    public Room planExpiryDate(Instant planExpiryDate) {
+    public Seller planExpiryDate(Instant planExpiryDate) {
         this.planExpiryDate = planExpiryDate;
         return this;
     }
@@ -170,16 +170,16 @@ public class Room extends AbstractAuditingEntity implements Serializable {
         this.planExpiryDate = planExpiryDate;
     }
 
-    public RoomStatus getStatus() {
+    public SellerStatus getStatus() {
         return this.status;
     }
 
-    public Room status(RoomStatus status) {
+    public Seller status(SellerStatus status) {
         this.status = status;
         return this;
     }
 
-    public void setStatus(RoomStatus status) {
+    public void setStatus(SellerStatus status) {
         this.status = status;
     }
 
@@ -187,7 +187,7 @@ public class Room extends AbstractAuditingEntity implements Serializable {
         return this.websiteLink;
     }
 
-    public Room websiteLink(String websiteLink) {
+    public Seller websiteLink(String websiteLink) {
         this.websiteLink = websiteLink;
         return this;
     }
@@ -200,7 +200,7 @@ public class Room extends AbstractAuditingEntity implements Serializable {
         return this.isDeleted;
     }
 
-    public Room isDeleted(Boolean isDeleted) {
+    public Seller isDeleted(Boolean isDeleted) {
         this.isDeleted = isDeleted;
         return this;
     }
@@ -213,7 +213,7 @@ public class Room extends AbstractAuditingEntity implements Serializable {
         return this.contact;
     }
 
-    public Room contact(Contact contact) {
+    public Seller contact(Contact contact) {
         this.setContact(contact);
         return this;
     }
@@ -226,29 +226,29 @@ public class Room extends AbstractAuditingEntity implements Serializable {
         return this.products;
     }
 
-    public Room products(Set<Product> products) {
+    public Seller products(Set<Product> products) {
         this.setProducts(products);
         return this;
     }
 
-    public Room addProduct(Product product) {
+    public Seller addProduct(Product product) {
         this.products.add(product);
-        product.setRoom(this);
+        product.setSeller(this);
         return this;
     }
 
-    public Room removeProduct(Product product) {
+    public Seller removeProduct(Product product) {
         this.products.remove(product);
-        product.setRoom(null);
+        product.setSeller(null);
         return this;
     }
 
     public void setProducts(Set<Product> products) {
         if (this.products != null) {
-            this.products.forEach(i -> i.setRoom(null));
+            this.products.forEach(i -> i.setSeller(null));
         }
         if (products != null) {
-            products.forEach(i -> i.setRoom(this));
+            products.forEach(i -> i.setSeller(this));
         }
         this.products = products;
     }
@@ -257,29 +257,29 @@ public class Room extends AbstractAuditingEntity implements Serializable {
         return this.services;
     }
 
-    public Room services(Set<Service> services) {
+    public Seller services(Set<Service> services) {
         this.setServices(services);
         return this;
     }
 
-    public Room addService(Service service) {
+    public Seller addService(Service service) {
         this.services.add(service);
-        service.setRoom(this);
+        service.setSeller(this);
         return this;
     }
 
-    public Room removeService(Service service) {
+    public Seller removeService(Service service) {
         this.services.remove(service);
-        service.setRoom(null);
+        service.setSeller(null);
         return this;
     }
 
     public void setServices(Set<Service> services) {
         if (this.services != null) {
-            this.services.forEach(i -> i.setRoom(null));
+            this.services.forEach(i -> i.setSeller(null));
         }
         if (services != null) {
-            services.forEach(i -> i.setRoom(this));
+            services.forEach(i -> i.setSeller(this));
         }
         this.services = services;
     }
@@ -288,29 +288,29 @@ public class Room extends AbstractAuditingEntity implements Serializable {
         return this.userVisits;
     }
 
-    public Room userVisits(Set<UserVisit> userVisits) {
+    public Seller userVisits(Set<UserVisit> userVisits) {
         this.setUserVisits(userVisits);
         return this;
     }
 
-    public Room addUserVisit(UserVisit userVisit) {
+    public Seller addUserVisit(UserVisit userVisit) {
         this.userVisits.add(userVisit);
-        userVisit.setRoom(this);
+        userVisit.setSeller(this);
         return this;
     }
 
-    public Room removeUserVisit(UserVisit userVisit) {
+    public Seller removeUserVisit(UserVisit userVisit) {
         this.userVisits.remove(userVisit);
-        userVisit.setRoom(null);
+        userVisit.setSeller(null);
         return this;
     }
 
     public void setUserVisits(Set<UserVisit> userVisits) {
         if (this.userVisits != null) {
-            this.userVisits.forEach(i -> i.setRoom(null));
+            this.userVisits.forEach(i -> i.setSeller(null));
         }
         if (userVisits != null) {
-            userVisits.forEach(i -> i.setRoom(this));
+            userVisits.forEach(i -> i.setSeller(this));
         }
         this.userVisits = userVisits;
     }
@@ -319,7 +319,7 @@ public class Room extends AbstractAuditingEntity implements Serializable {
         return this.sellerPlan;
     }
 
-    public Room sellerPlan(SellerPlan sellerPlan) {
+    public Seller sellerPlan(SellerPlan sellerPlan) {
         this.setSellerPlan(sellerPlan);
         return this;
     }
@@ -335,10 +335,10 @@ public class Room extends AbstractAuditingEntity implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Room)) {
+        if (!(o instanceof Seller)) {
             return false;
         }
-        return id != null && id.equals(((Room) o).id);
+        return id != null && id.equals(((Seller) o).id);
     }
 
     @Override
@@ -350,7 +350,7 @@ public class Room extends AbstractAuditingEntity implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "Room{" +
+        return "Seller{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", logoImageUrl='" + getLogoImageUrl() + "'" +

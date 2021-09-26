@@ -46,12 +46,12 @@ public class Category extends AbstractAuditingEntity implements Serializable {
 
     @OneToMany(mappedBy = "category")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "category", "room" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "category", "seller" }, allowSetters = true)
     private Set<Product> products = new HashSet<>();
 
     @OneToMany(mappedBy = "category")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "category", "room" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "category", "seller" }, allowSetters = true)
     private Set<Service> services = new HashSet<>();
 
     @ManyToOne

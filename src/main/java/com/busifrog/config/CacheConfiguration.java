@@ -52,10 +52,10 @@ public class CacheConfiguration {
             createCache(cm, com.busifrog.domain.Authority.class.getName());
             createCache(cm, com.busifrog.domain.User.class.getName() + ".authorities");
             createCache(cm, com.busifrog.domain.SellerPlan.class.getName());
-            createCache(cm, com.busifrog.domain.Room.class.getName());
-            createCache(cm, com.busifrog.domain.Room.class.getName() + ".products");
-            createCache(cm, com.busifrog.domain.Room.class.getName() + ".services");
-            createCache(cm, com.busifrog.domain.Room.class.getName() + ".userVisits");
+            createCache(cm, com.busifrog.domain.Seller.class.getName());
+            createCache(cm, com.busifrog.domain.Seller.class.getName() + ".products");
+            createCache(cm, com.busifrog.domain.Seller.class.getName() + ".services");
+            createCache(cm, com.busifrog.domain.Seller.class.getName() + ".userVisits");
             createCache(cm, com.busifrog.domain.Contact.class.getName());
             createCache(cm, com.busifrog.domain.Category.class.getName());
             createCache(cm, com.busifrog.domain.Category.class.getName() + ".subCategories");

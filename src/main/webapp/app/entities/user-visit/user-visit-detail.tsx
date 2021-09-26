@@ -80,9 +80,9 @@ export const UserVisitDetail = (props: RouteComponentProps<{ id: string }>) => {
           </dt>
           <dd>{userVisitEntity.isDeleted ? 'true' : 'false'}</dd>
           <dt>
-            <Translate contentKey="busifrogApp.userVisit.room">Room</Translate>
+            <Translate contentKey="busifrogApp.userVisit.seller">Seller</Translate>
           </dt>
-          <dd>{userVisitEntity.room ? userVisitEntity.room.id : ''}</dd>
+          <dd>{userVisitEntity.seller ? userVisitEntity.seller.id : ''}</dd>
         </dl>
         <Button tag={Link} to="/user-visit" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

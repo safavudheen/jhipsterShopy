@@ -8,7 +8,7 @@
       "entities": {
         "main": "Entities",
         "sellerPlan": "Seller Plan",
-        "room": "Room",
+        "seller": "Seller",
         "contact": "Contact",
         "category": "Category",
         "product": "Product",

@@ -14,6 +14,6 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface ContactRepository extends JpaRepository<Contact, Long> {
-    @Query(value = "select c.* from contact c join room r on r.contact_id = c.id where r.id =?1", nativeQuery = true)
-    Optional<Contact> findByRoomId(Long roomId);
+    @Query(value = "select c.* from contact c join seller r on r.contact_id = c.id where r.id =?1", nativeQuery = true)
+    Optional<Contact> findBySellerId(Long sellerId);
 }
