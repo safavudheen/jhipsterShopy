@@ -191,9 +191,9 @@ public class ServiceResource {
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
-    @GetMapping("room/{id}/services")
-    public ResponseEntity<List<Service>> getAllServicesByRoom(@PathVariable Long id, Pageable pageable) {
-        Page<Service> page = serviceRepository.findAllByRoomId(id, pageable);
+    @GetMapping("seller/{id}/services")
+    public ResponseEntity<List<Service>> getAllServicesBySeller(@PathVariable Long id, Pageable pageable) {
+        Page<Service> page = serviceRepository.findAllBySellerId(id, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

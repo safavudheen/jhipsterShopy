@@ -57,7 +57,7 @@ public class Contact extends AbstractAuditingEntity implements Serializable {
 
     @JsonIgnoreProperties(value = { "contact", "products", "services", "userVisits", "sellerPlan" }, allowSetters = true)
     @OneToOne(mappedBy = "contact")
-    private Room room;
+    private Seller seller;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -216,23 +216,23 @@ public class Contact extends AbstractAuditingEntity implements Serializable {
         this.isDeleted = isDeleted;
     }
 
-    public Room getRoom() {
-        return this.room;
+    public Seller getSeller() {
+        return this.seller;
     }
 
-    public Contact room(Room room) {
-        this.setRoom(room);
+    public Contact seller(Seller seller) {
+        this.setSeller(seller);
         return this;
     }
 
-    public void setRoom(Room room) {
-        if (this.room != null) {
-            this.room.setContact(null);
+    public void setSeller(Seller seller) {
+        if (this.seller != null) {
+            this.seller.setContact(null);
         }
-        if (room != null) {
-            room.setContact(this);
+        if (seller != null) {
+            seller.setContact(this);
         }
-        this.room = room;
+        this.seller = seller;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

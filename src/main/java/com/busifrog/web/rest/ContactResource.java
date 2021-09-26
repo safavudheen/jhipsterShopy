@@ -189,11 +189,11 @@ public class ContactResource {
      */
     @GetMapping("/contacts")
     public List<Contact> getAllContacts(@RequestParam(required = false) String filter) {
-        if ("room-is-null".equals(filter)) {
-            log.debug("REST request to get all Contacts where room is null");
+        if ("seller-is-null".equals(filter)) {
+            log.debug("REST request to get all Contacts where seller is null");
             return StreamSupport
                 .stream(contactRepository.findAll().spliterator(), false)
-                .filter(contact -> contact.getRoom() == null)
+                .filter(contact -> contact.getSeller() == null)
                 .collect(Collectors.toList());
         }
         log.debug("REST request to get all Contacts");
@@ -213,9 +213,9 @@ public class ContactResource {
         return ResponseUtil.wrapOrNotFound(contact);
     }
 
-    @GetMapping("/room/{id}/contact")
-    public ResponseEntity<Contact> getContactByRoom(@PathVariable Long id) {
-        Optional<Contact> contact = contactRepository.findByRoomId(id);
+    @GetMapping("/seller/{id}/contact")
+    public ResponseEntity<Contact> getContactBySeller(@PathVariable Long id) {
+        Optional<Contact> contact = contactRepository.findBySellerId(id);
         return ResponseUtil.wrapOrNotFound(contact);
     }
 

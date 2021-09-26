@@ -194,9 +194,9 @@ public class ProductResource {
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
-    @GetMapping("room/{id}/products")
-    public ResponseEntity<List<Product>> getAllProductsByRoom(@PathVariable Long id, Pageable pageable) {
-        Page<Product> page = productRepository.findAllByRoomId(id, pageable);
+    @GetMapping("seller/{id}/products")
+    public ResponseEntity<List<Product>> getAllProductsBySeller(@PathVariable Long id, Pageable pageable) {
+        Page<Product> page = productRepository.findAllBySellerId(id, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

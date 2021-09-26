@@ -1,9 +1,9 @@
 package com.busifrog.domain.enumeration;
 
 /**
- * The RoomStatus enumeration.
+ * The SellerStatus enumeration.
  */
-public enum RoomStatus {
+public enum SellerStatus {
     INACTIVE,
     VERIFIED,
 }
