@@ -27,7 +27,6 @@ export const Seller = (props: RouteComponentProps<{ url: string }>) => {
 
   return (
     <div>
-      <div className=""></div>
       <h2 id="seller-heading" data-cy="SellerHeading">
         <Translate contentKey="busifrogApp.seller.home.title">Sellers</Translate>
         <div className="d-flex justify-content-end">

@@ -46,7 +46,7 @@ function SideBar() {
     setService(false);
     setContact(false);
     history.push('/seller');
-    //profile changed to seller
+    //profile
   };
   const handlePoduct = e => {
     setDashboard(false);
