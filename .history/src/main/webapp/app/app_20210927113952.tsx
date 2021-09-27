@@ -51,7 +51,7 @@ export const App = () => {
             isInProduction={isInProduction}
             isOpenAPIEnabled={isOpenAPIEnabled}
           />
-          <SideBar />
+          <SideBar></SideBar>
         </ErrorBoundary>
         <div className="container-fluid view-container" id="app-view-container">
           <Card className="jh-card">
