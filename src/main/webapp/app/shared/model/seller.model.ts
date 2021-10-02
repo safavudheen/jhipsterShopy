@@ -26,6 +26,18 @@ export interface ISeller {
   services?: IService[] | null;
   userVisits?: IUserVisit[] | null;
   sellerPlan?: ISellerPlan | null;
+
+  companyname?: string | null;
+  address?: string | null;
+  state?: string | null;
+  district?: string | null;
+  region?: string | null;
+  firstAccountnumber?: number | null;
+  ifscCode?: string | null;
+  pancard?: string | null;
+  gstnumber?: string | null;
+  mobile?: number | null;
+  user?: string | null;
 }
 
 export const defaultValue: Readonly<ISeller> = {

@@ -13,6 +13,8 @@ import Category from './category';
 import Product from './product';
 import Service from './service';
 import UserVisit from './user-visit';
+import Profile from './profile';
+import Dashboard from './dashboard';
 /* jhipster-needle-add-route-import - JHipster will add routes here */
 
 // const account = useAppSelector(state => state.authentication.account);
@@ -29,6 +31,9 @@ const Routes = ({ match }) => (
       <ErrorBoundaryRoute path={`${match.url}product`} component={Product} />
       <ErrorBoundaryRoute path={`${match.url}service`} component={Service} />
       <ErrorBoundaryRoute path={`${match.url}user-visit`} component={UserVisit} />
+      <ErrorBoundaryRoute path={`${match.url}profile`} component={Profile} />
+      <ErrorBoundaryRoute path={`${match.url}dashboard`} component={Dashboard} />
+
       {/* jhipster-needle-add-route-path - JHipster will add routes here */}
     </Switch>
   </div>
