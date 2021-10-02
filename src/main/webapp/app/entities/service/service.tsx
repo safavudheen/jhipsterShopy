@@ -94,7 +94,7 @@ export const Service = (props: RouteComponentProps<{ url: string }>) => {
   const { match } = props;
 
   return (
-    <div>
+    <div className="pl-5">
       <h2 id="service-heading" data-cy="ServiceHeading">
         <Translate contentKey="busifrogApp.service.home.title">Services</Translate>
         <div className="d-flex justify-content-end">

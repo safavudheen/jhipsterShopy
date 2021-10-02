@@ -26,7 +26,7 @@ export const Contact = (props: RouteComponentProps<{ url: string }>) => {
   const { match } = props;
 
   return (
-    <div>
+    <div className="pl-5">
       <h2 id="contact-heading" data-cy="ContactHeading">
         <Translate contentKey="busifrogApp.contact.home.title">Contacts</Translate>
         <div className="d-flex justify-content-end">

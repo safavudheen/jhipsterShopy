@@ -94,7 +94,7 @@ export const Product = (props: RouteComponentProps<{ url: string }>) => {
   const { match } = props;
 
   return (
-    <div>
+    <div className="pl-5">
       <h2 id="product-heading" data-cy="ProductHeading">
         <Translate contentKey="busifrogApp.product.home.title">Products</Translate>
         <div className="d-flex justify-content-end">
