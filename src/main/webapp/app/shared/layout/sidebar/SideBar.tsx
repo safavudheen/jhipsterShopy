@@ -45,7 +45,7 @@ function SideBar() {
     setProduct(false);
     setService(false);
     setContact(false);
-    history.push('/seller');
+    history.push('/profile');
     //profile changed to seller
   };
   const handlePoduct = e => {
@@ -77,7 +77,8 @@ function SideBar() {
 
   return (
     <Row>
-      <Col className="d-none d-md-block">
+      <Col>
+        {/* className="d-none d-md-block" */}
         <div className="sideBar">
           <FontAwesomeIcon icon={faAngleRight} size="3x" className="mb-3 ml-2" onClick={handleSidetext} />
 
@@ -119,35 +120,30 @@ function SideBar() {
                     {/* <th > <FontAwesomeIcon icon={faServer} /></th> */}
 
                     <td onClick={handleDashboard} className={dashboard ? 'text-warning btn-sideBar' : ''}>
-                      {' '}
                       Dashboard
                     </td>
                   </tr>
                   <tr>
                     {/* <th ><FontAwesomeIcon icon={faUserAlt} /></th> */}
                     <td onClick={handleProfile} className={profile ? 'text-warning btn-sideBar' : ''}>
-                      {' '}
                       Profile
                     </td>
                   </tr>
                   <tr>
                     {/* <th ><FontAwesomeIcon icon={faProjectDiagram} /></th> */}
                     <td onClick={handlePoduct} className={product ? 'text-warning btn-sideBar' : ''}>
-                      {' '}
                       Product
                     </td>
                   </tr>
                   <tr>
                     {/* <th ><FontAwesomeIcon icon={faHandshake} /></th> */}
                     <td onClick={handleService} className={service ? 'text-warning btn-sideBar' : ''}>
-                      {' '}
                       Service
                     </td>
                   </tr>
                   <tr>
                     {/* <th ><FontAwesomeIcon icon={faPhoneSquare} /></th> */}
                     <td onClick={handleContact} className={contact ? 'text-warning btn-sideBar' : ''}>
-                      {' '}
                       Contact
                     </td>
                   </tr>
