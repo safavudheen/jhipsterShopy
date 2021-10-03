@@ -1,0 +1,58 @@
+{
+  "userform": {
+    "title": "Busifrog",
+    "form": {
+      "id": "ID",
+      "name": "Give You Business Name",
+      "userlogo": "",
+      "pincode": "",
+      "userstatus": "Status",
+      " website": "Website linlk",
+      "state": "State",
+      "district": "District",
+      "region": "Region",
+      "account": "Account Number",
+      "confirmaccount": "Verify Account Number",
+      "ifsc": "IFSC Code",
+      "pancard": "Enter Pancard Number",
+      "gstnumber": "Enter GST Number",
+      "mobile": "Enter Mobile Number",
+      "logoImage": "Give Your Company Logo"
+    },
+    "messages": {
+      "validate": {
+        "name": {
+          "required": "Name is required."
+        },
+        "pancard": {
+          "required": "Your PAN Number is Required.",
+          "minlength": "Your PAN number is required to be at least 4 characters.",
+          "maxlength": "Your PAN Number cannot be longer than 50 characters."
+        },
+        "account": {
+          "required": "Your Account Number is Required.",
+          "minlength": "Your Account number is required to be at least 4 characters.",
+          "maxlength": "Your Account Number cannot be longer than 50 characters."
+        },
+        "confirmaccount": {
+          "required": "Your confirmation password is required.",
+          "minlength": "Your confirmation password is required to be at least 4 characters.",
+          "maxlength": "Your confirmation password cannot be longer than 50 characters.",
+          "accounterror": "both account number are differnt"
+        },
+        "ifsc": {
+          "required": "Your account ifsc code is required.",
+          "invalid": "Your account ifsc code is invalid.",
+          "minlength": "Your account ifsc code is required to be at least 5 characters.",
+          "maxlength": "Your account ifsc code cannot be longer than 50 characters."
+        },
+        "gstnumber": {
+          "required": "Your account gst number is required.",
+          "invalid": "Your account gst number is invalid.",
+          "minlength": "Your account gst number is required to be at least 5 characters.",
+          "maxlength": "Your account gst number cannot be longer than 50 characters."
+        }
+      }
+    }
+  }
+}
