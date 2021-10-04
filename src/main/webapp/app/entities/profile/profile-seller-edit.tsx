@@ -17,8 +17,6 @@ import { useAppDispatch, useAppSelector } from 'app/config/store';
 export const ProfileSellerUpdate = (props: RouteComponentProps<{ id: string }>) => {
   const dispatch = useAppDispatch();
 
-  const [isNew] = useState(!props.match.params || !props.match.params.id);
-
   const contacts = useAppSelector(state => state.contact.entities);
   const sellerPlans = useAppSelector(state => state.sellerPlan.entities);
   const sellerEntity = useAppSelector(state => state.seller.entity);
@@ -27,33 +25,13 @@ export const ProfileSellerUpdate = (props: RouteComponentProps<{ id: string }>) 
   const updateSuccess = useAppSelector(state => state.seller.updateSuccess);
 
   const [accountNumber, setAccountNumber] = useState('');
-  // const [verify,setVerify] = useState("")
-  // const [donotmatch, setDonotmatch] = useState(false)
   const updateAccountNumber = event => {
     setAccountNumber(event.target.value);
   };
-  // const verfyAccountNumber=((event)=>{setVerify(event.target.value)});
 
   const handleClose = () => {
     props.history.push('/pofile');
   };
-
-  // if(accountNumber === verify){
-  //   setDonotmatch(true)
-  // }else{
-  //   setDonotmatch(false)
-  // }
-
-  useEffect(() => {
-    if (isNew) {
-      dispatch(reset());
-    } else {
-      dispatch(getEntity(props.match.params.id));
-    }
-
-    dispatch(getContacts({}));
-    dispatch(getSellerPlans({}));
-  }, []);
 
   useEffect(() => {
     if (updateSuccess) {
@@ -68,46 +46,6 @@ export const ProfileSellerUpdate = (props: RouteComponentProps<{ id: string }>) 
     dispatch(createEntity(entity));
     // console.log(entity);
   };
-
-  // const saveEntity = ({ companyname, logoImageUrl, pincode, websiteLink, address, state, district, region,firstAccountnumber,ifscCode, pancard, gstnumber,mobile }) => {
-  //   dispatch(updateProfileEntity({ companyname, logoImageUrl, pincode, websiteLink, address, state, district, region,firstAccountnumber,ifscCode, pancard, gstnumber,mobile} ))
-  // }
-
-  // const saveEntity = values => {
-  //   values.planExpiryDate = convertDateTimeToServer(values.planExpiryDate);
-  //   values.createdDate = convertDateTimeToServer(values.createdDate);
-  //   values.lastModifiedDate = convertDateTimeToServer(values.lastModifiedDate);
-
-  //   const entity = {
-  //     ...sellerEntity,
-  //     ...values,
-  //     contact: contacts.find(it => it.id.toString() === values.contactId.toString()),
-  //     sellerPlan: sellerPlans.find(it => it.id.toString() === values.sellerPlanId.toString()),
-  //   };
-
-  //   if (isNew) {
-  //     dispatch(createEntity(entity));
-  //   } else {+
-  //     dispatch(updateProfileEntity(entity));
-  //   }
-  // };
-
-  // const defaultValues = () =>
-  //   isNew
-  //     ? {
-  //         planExpiryDate: displayDefaultDateTime(),
-  //         createdDate: displayDefaultDateTime(),
-  //         lastModifiedDate: displayDefaultDateTime(),
-  //       }
-  //     : {
-  //         ...sellerEntity,
-  //         planExpiryDate: convertDateTimeFromServer(sellerEntity.planExpiryDate),
-  //         status: 'INACTIVE',
-  //         createdDate: convertDateTimeFromServer(sellerEntity.createdDate),
-  //         lastModifiedDate: convertDateTimeFromServer(sellerEntity.lastModifiedDate),
-  //         contactId: sellerEntity?.contact?.id,
-  //         sellerPlanId: sellerEntity?.sellerPlan?.id,
-  //       };
 
   return (
     <div>
@@ -258,45 +196,6 @@ export const ProfileSellerUpdate = (props: RouteComponentProps<{ id: string }>) 
                   maxLength: { value: 15, message: translate('bankaccount.messages.validate.gstnumber.maxlength') },
                 }}
               />
-              {/* <ValidatedField
-                id="seller-contact"
-                name="contactId"
-                data-cy="contact"
-                label={translate('busifrogApp.seller.contact')}
-                type="select"
-              >
-                <option value="" key="0" />
-                {contacts
-                  ? contacts.map(otherEntity => (
-                      <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.firstPersonName}
-                      </option>
-                    ))
-                  : null}
-              </ValidatedField>
-              <ValidatedField
-                id="seller-sellerPlan"
-                name="sellerPlanId"
-                data-cy="sellerPlan"
-                label={translate('busifrogApp.seller.sellerPlan')}
-                type="select"
-              >
-                <option value="" key="0" />
-                {sellerPlans
-                  ? sellerPlans.map(otherEntity => (
-                      <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.name}
-                      </option>
-                    ))
-                  : null}
-              </ValidatedField> */}
-              {/* <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/seller" replace color="info">
-                <FontAwesomeIcon icon="arrow-left" />
-                &nbsp;
-                <span className="d-none d-md-inline">
-                  <Translate contentKey="entity.action.back">Back</Translate>
-                </span>
-              </Button> */}
               &nbsp;
               <Button color="primary" id="save-entity" data-cy="entityCreateSaveButton" type="submit">
                 <FontAwesomeIcon icon="save" />
