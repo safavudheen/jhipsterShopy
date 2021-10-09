@@ -6,11 +6,12 @@ import { toast } from 'react-toastify';
 import PasswordStrengthBar from 'app/shared/layout/password/password-strength-bar';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 import { handleRegister, reset } from './register.reducer';
+import Recaptcha from 'react-recaptcha';
 
 export const RegisterPage = () => {
   const [password, setPassword] = useState('');
   const dispatch = useAppDispatch();
-
+  const [capchaempty, setCapchaempty] = useState(false);
   useEffect(
     () => () => {
       dispatch(reset());
@@ -34,6 +35,19 @@ export const RegisterPage = () => {
     }
   }, [successMessage]);
 
+  const callback = function () {
+    console.log('Done!!!!');
+  };
+
+  const verifyCallback = function (response) {
+    console.log(response);
+    if (response) {
+      setCapchaempty(true);
+      console.log('captcha verified');
+    } else {
+      console.log('not captcha verified');
+    }
+  };
   return (
     <div>
       <Row className="justify-content-center">
@@ -101,7 +115,13 @@ export const RegisterPage = () => {
               }}
               data-cy="secondPassword"
             />
-            <Button id="register-submit" color="primary" type="submit" data-cy="submit">
+            <Recaptcha
+              sitekey="6LeXUrkcAAAAAHINl3oS507dEl5bzE7yshPLxrGZ"
+              render="explicit"
+              verifyCallback={verifyCallback}
+              onloadCallback={callback}
+            />
+            <Button disabled={!capchaempty} id="register-submit" className="mt-2" color="primary" type="submit" data-cy="submit">
               <Translate contentKey="register.form.button">Register</Translate>
             </Button>
           </ValidatedForm>

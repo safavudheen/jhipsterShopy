@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Translate, translate, ValidatedField, ValidatedForm, isEmail } from 'react-jhipster';
 import { Button, Alert, Col, Row } from 'reactstrap';
 import { toast } from 'react-toastify';
 
 import { handlePasswordResetInit, reset } from '../password-reset.reducer';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
+import Recaptcha from 'react-recaptcha';
 
 export const PasswordResetInit = () => {
   const dispatch = useAppDispatch();
@@ -18,6 +19,21 @@ export const PasswordResetInit = () => {
 
   const handleValidSubmit = ({ email }) => {
     dispatch(handlePasswordResetInit(email));
+  };
+
+  const [capchaempty, setCapchaempty] = useState(false);
+  const callback = function () {
+    console.log('Done!!!!');
+  };
+
+  const verifyCallback = function (response) {
+    console.log(response);
+    if (response) {
+      setCapchaempty(true);
+      console.log('captcha verified');
+    } else {
+      console.log('not capcha verified');
+    }
   };
 
   const successMessage = useAppSelector(state => state.passwordReset.successMessage);
@@ -54,7 +70,13 @@ export const PasswordResetInit = () => {
               }}
               data-cy="emailResetPassword"
             />
-            <Button color="primary" type="submit" data-cy="submit">
+            <Recaptcha
+              sitekey="6LeXUrkcAAAAAHINl3oS507dEl5bzE7yshPLxrGZ"
+              render="explicit"
+              verifyCallback={verifyCallback}
+              onloadCallback={callback}
+            />
+            <Button disabled={!capchaempty} className="mt-2" color="primary" type="submit" data-cy="submit">
               <Translate contentKey="reset.request.form.button">Reset password</Translate>
             </Button>
           </ValidatedForm>
