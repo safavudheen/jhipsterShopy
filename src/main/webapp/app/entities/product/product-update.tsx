@@ -13,6 +13,7 @@ import { IProduct } from 'app/shared/model/product.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
 import { mapIdList } from 'app/shared/util/entity-utils';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
+import './Style/product-update.scss';
 
 export const ProductUpdate = (props: RouteComponentProps<{ id: string }>) => {
   const dispatch = useAppDispatch();
@@ -29,6 +30,12 @@ export const ProductUpdate = (props: RouteComponentProps<{ id: string }>) => {
   const handleClose = () => {
     props.history.push('/product');
   };
+
+  const [image1, setImage1] = useState(null);
+  const [image2, setImage2] = useState(null);
+  const [image3, setImage3] = useState(null);
+
+  console.log(image3);
 
   useEffect(() => {
     if (!isNew) {
@@ -61,6 +68,19 @@ export const ProductUpdate = (props: RouteComponentProps<{ id: string }>) => {
     } else {
       dispatch(updateEntity(entity));
     }
+  };
+
+  //----------------------
+  const handleImage1 = e => {
+    setImage1(e.target.files[0]);
+  };
+
+  const handleImage2 = e => {
+    setImage2(e.target.files[0]);
+  };
+
+  const handleImage3 = e => {
+    setImage3(e.target.files[0]);
   };
 
   const defaultValues = () =>
@@ -104,6 +124,7 @@ export const ProductUpdate = (props: RouteComponentProps<{ id: string }>) => {
               ) : null}
               <ValidatedField
                 label={translate('busifrogApp.product.name')}
+                placeholder="Name of the Product"
                 id="product-name"
                 name="name"
                 data-cy="name"
@@ -113,7 +134,7 @@ export const ProductUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 }}
               />
               <ValidatedField label={translate('busifrogApp.product.code')} id="product-code" name="code" data-cy="code" type="text" />
-              <ValidatedField
+              {/* <ValidatedField
                 label={translate('busifrogApp.product.filePath')}
                 id="product-filePath"
                 name="filePath"
@@ -122,35 +143,22 @@ export const ProductUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 validate={{
                   required: { value: true, message: translate('entity.validation.required') },
                 }}
-              />
-              <ValidatedField
+              /> */}
+              {/* <ValidatedField
                 label={translate('busifrogApp.product.fileType')}
                 id="product-fileType"
                 name="fileType"
                 data-cy="fileType"
                 type="text"
-              />
-              <ValidatedField
+              /> */}
+              {/* <ValidatedField
                 label={translate('busifrogApp.product.shortDescription')}
                 id="product-shortDescription"
                 name="shortDescription"
                 data-cy="shortDescription"
                 type="text"
-              />
-              <ValidatedField
-                label={translate('busifrogApp.product.description')}
-                id="product-description"
-                name="description"
-                data-cy="description"
-                type="text"
-              />
-              <ValidatedField
-                label={translate('busifrogApp.product.externalLink')}
-                id="product-externalLink"
-                name="externalLink"
-                data-cy="externalLink"
-                type="text"
-              />
+              /> */}
+              <ValidatedField name="price" label="Price Of The Product" type="number" required />
               <ValidatedField
                 id="product-category"
                 name="categoryId"
@@ -168,10 +176,63 @@ export const ProductUpdate = (props: RouteComponentProps<{ id: string }>) => {
                     ))
                   : null}
               </ValidatedField>
-              <FormText>
-                <Translate contentKey="entity.validation.required">This field is required.</Translate>
-              </FormText>
+              <ValidatedField placeholder="Brand Name" name="brand" label="The Product Brand" type="number" required />
               <ValidatedField
+                label={translate('busifrogApp.product.description')}
+                id="product-description"
+                name="description"
+                data-cy="description"
+                type="textarea"
+              />
+              <h4>Upload Image of The Product</h4>
+              <Row style={{}}>
+                <Col>
+                  <img className="upload_image_div" src={image1 ? URL.createObjectURL(image1) : ''} alt="" />
+                  <ValidatedField
+                    label="first image"
+                    id="product-description"
+                    name="product_image_1"
+                    type="file"
+                    required
+                    onChange={handleImage1}
+                  />
+                </Col>
+                <Col>
+                  <img className="upload_image_div" src={image2 ? URL.createObjectURL(image2) : ''} alt="" />
+
+                  <ValidatedField
+                    label="second image"
+                    id="product-description"
+                    name="product_image_2"
+                    type="file"
+                    required
+                    onChange={handleImage2}
+                  />
+                </Col>
+                <Col>
+                  <img className="upload_image_div" src={image3 ? URL.createObjectURL(image3) : ''} alt="" />
+
+                  <ValidatedField
+                    label="third image"
+                    id="product-description"
+                    name="Product_image_3"
+                    type="file"
+                    required
+                    onChange={handleImage3}
+                  />
+                </Col>
+              </Row>
+              {/* <ValidatedField
+                label={translate('busifrogApp.product.externalLink')}
+                id="product-externalLink"
+                name="externalLink"
+                data-cy="externalLink"
+                type="textarea"
+              /> */}
+              {/* <FormText>
+                <Translate contentKey="entity.validation.required">This field is required.</Translate>
+              </FormText> */}
+              {/* <ValidatedField
                 id="product-seller"
                 name="sellerId"
                 data-cy="seller"
@@ -187,10 +248,10 @@ export const ProductUpdate = (props: RouteComponentProps<{ id: string }>) => {
                       </option>
                     ))
                   : null}
-              </ValidatedField>
-              <FormText>
+              </ValidatedField> */}
+              {/* <FormText>
                 <Translate contentKey="entity.validation.required">This field is required.</Translate>
-              </FormText>
+              </FormText> */}
               <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/product" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;

@@ -11,6 +11,7 @@ import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { ASC, DESC, ITEMS_PER_PAGE, SORT } from 'app/shared/util/pagination.constants';
 import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
+import '../product/Style/product.scss';
 
 export const Product = (props: RouteComponentProps<{ url: string }>) => {
   const dispatch = useAppDispatch();
@@ -95,9 +96,9 @@ export const Product = (props: RouteComponentProps<{ url: string }>) => {
 
   return (
     <div className="pl-5">
-      <h2 id="product-heading" data-cy="ProductHeading">
+      <h2 id="product-heading" data-cy="ProductHeading" style={{ paddingTop: '9px' }}>
         <Translate contentKey="busifrogApp.product.home.title">Products</Translate>
-        <div className="d-flex justify-content-end">
+        <div className="d-flex justify-content-end" style={{ float: 'right' }}>
           <Button className="mr-2" color="info" onClick={handleSyncList} disabled={loading}>
             <FontAwesomeIcon icon="sync" spin={loading} />{' '}
             <Translate contentKey="busifrogApp.product.home.refreshListLabel">Refresh List</Translate>
@@ -126,9 +127,13 @@ export const Product = (props: RouteComponentProps<{ url: string }>) => {
                     <Translate contentKey="busifrogApp.product.id">ID</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
                   <th className="hand" onClick={sort('name')}>
+                    <Translate contentKey="busifrogApp.product.name">Image</Translate> <FontAwesomeIcon icon="sort" />
+                  </th>
+                  <th className="product_name" onClick={sort('name')}>
                     <Translate contentKey="busifrogApp.product.name">Name</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
-                  <th className="hand" onClick={sort('code')}>
+
+                  {/* <th className="hand" onClick={sort('code')}>
                     <Translate contentKey="busifrogApp.product.code">Code</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
                   <th className="hand" onClick={sort('filePath')}>
@@ -136,7 +141,7 @@ export const Product = (props: RouteComponentProps<{ url: string }>) => {
                   </th>
                   <th className="hand" onClick={sort('fileType')}>
                     <Translate contentKey="busifrogApp.product.fileType">File Type</Translate> <FontAwesomeIcon icon="sort" />
-                  </th>
+                  </th> */}
                   <th className="hand" onClick={sort('shortDescription')}>
                     <Translate contentKey="busifrogApp.product.shortDescription">Short Description</Translate>{' '}
                     <FontAwesomeIcon icon="sort" />
@@ -144,14 +149,18 @@ export const Product = (props: RouteComponentProps<{ url: string }>) => {
                   <th className="hand" onClick={sort('description')}>
                     <Translate contentKey="busifrogApp.product.description">Description</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
-                  <th className="hand" onClick={sort('externalLink')}>
-                    <Translate contentKey="busifrogApp.product.externalLink">External Link</Translate> <FontAwesomeIcon icon="sort" />
-                  </th>
+
                   <th>
                     <Translate contentKey="busifrogApp.product.category">Category</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
-                  <th>
+                  {/* <th>
                     <Translate contentKey="busifrogApp.product.seller">Seller</Translate> <FontAwesomeIcon icon="sort" />
+                  </th> */}
+                  <th className="product_name" onClick={sort('name')}>
+                    Price
+                  </th>
+                  <th className="hand" onClick={sort('externalLink')}>
+                    <Translate contentKey="busifrogApp.product.externalLink">External Link</Translate> <FontAwesomeIcon icon="sort" />
                   </th>
                   <th />
                 </tr>
@@ -164,15 +173,25 @@ export const Product = (props: RouteComponentProps<{ url: string }>) => {
                         {product.id}
                       </Button>
                     </td>
-                    <td>{product.name}</td>
-                    <td>{product.code}</td>
-                    <td>{product.filePath}</td>
-                    <td>{product.fileType}</td>
+                    <td className="product_imgecol">
+                      <img
+                        className="product_image"
+                        src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZHVjdHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
+                        alt=""
+                      />
+                    </td>
+                    <td className="product_name">{product.name}</td>
+
+                    {/* <td>{product.code}</td> */}
+                    {/* <td>{product.filePath}</td> */}
+                    {/* <td>{product.fileType}</td> */}
                     <td>{product.shortDescription}</td>
                     <td>{product.description}</td>
-                    <td>{product.externalLink}</td>
+
                     <td>{product.category ? <Link to={`category/${product.category.id}`}>{product.category.name}</Link> : ''}</td>
-                    <td>{product.seller ? <Link to={`seller/${product.seller.id}`}>{product.seller.name}</Link> : ''}</td>
+                    <td style={{ fontWeight: 'bold' }}>2030</td>
+                    <td>{product.externalLink}</td>
+                    {/* <td>{product.seller ? <Link to={`seller/${product.seller.id}`}>{product.seller.name}</Link> : ''}</td> */}
                     <td className="text-right">
                       <div className="btn-group flex-btn-group-container">
                         <Button tag={Link} to={`${match.url}/${product.id}`} color="info" size="sm" data-cy="entityDetailsButton">
