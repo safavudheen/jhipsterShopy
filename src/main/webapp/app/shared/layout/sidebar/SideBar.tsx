@@ -36,6 +36,7 @@ function SideBar() {
     setProduct(false);
     setService(false);
     setContact(false);
+    setTextmenu(false);
     history.push('/dashboard');
   };
 
@@ -45,6 +46,7 @@ function SideBar() {
     setProduct(false);
     setService(false);
     setContact(false);
+    setTextmenu(false);
     history.push('/profile');
     //profile changed to seller
   };
@@ -54,6 +56,7 @@ function SideBar() {
     setProduct(true);
     setService(false);
     setContact(false);
+    setTextmenu(false);
     history.push('/product');
   };
   const handleService = e => {
@@ -62,7 +65,7 @@ function SideBar() {
     setProduct(false);
     setService(true);
     setContact(false);
-
+    setTextmenu(false);
     history.push('/service');
   };
   const handleContact = e => {
@@ -71,7 +74,7 @@ function SideBar() {
     setProduct(false);
     setService(false);
     setContact(true);
-
+    setTextmenu(false);
     history.push('/contact');
   };
 

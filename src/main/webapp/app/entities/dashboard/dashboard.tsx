@@ -12,7 +12,7 @@ function Dashboard(props: RouteComponentProps<{ url: string }>) {
 
   return (
     <div>
-      <Row className="pt-4 p-1 pl-4">
+      <Row className=" p-1 pl-5">
         <Col xs="12" sm="12" md="12" className="dashboard">
           <div>
             <h2 id="product-heading" data-cy="ProductHeading">
