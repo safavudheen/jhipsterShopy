@@ -7,18 +7,35 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getEntity } from '../seller/seller.reducer';
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
+import { useHistory } from 'react-router';
 
 export const ProfileSellerDetail = (props: RouteComponentProps<{ id: string }>) => {
+  const { match } = props;
+  const history = useHistory();
+
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(getEntity(props.match.params.id));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getEntity(props.match.params.id));
+  // }, []);
+
+  const handlePlan1 = e => {
+    history.push(`${match.url}/plan1`);
+  };
+  const handlePlan2 = e => {
+    history.push(`${match.url}/plan2`);
+  };
+  const handlePlan3 = e => {
+    history.push(`${match.url}/plan3`);
+  };
+  const handlePlan4 = e => {
+    history.push(`${match.url}/plan4`);
+  };
 
   const sellerEntity = useAppSelector(state => state.seller.entity);
   return (
     <Row className="pl-5" style={{ minHeight: '43rem' }}>
-      <Col md="12">
+      <Col md="12" className="pl-3">
         <h2 data-cy="sellerDetailsHeading">
           {/* <Translate contentKey="busifrogApp.seller.detail.title">Seller</Translate> */}
           Profile
@@ -202,7 +219,7 @@ export const ProfileSellerDetail = (props: RouteComponentProps<{ id: string }>) 
         </Row>
       </Col>
 
-      <div className="pl-1" style={{ width: '-webkit-fill-available' }}>
+      <div className="pl-4 pr-2" style={{ width: '-webkit-fill-available' }}>
         <h4 className="">Select Plan</h4>
 
         <Row>
@@ -216,7 +233,7 @@ export const ProfileSellerDetail = (props: RouteComponentProps<{ id: string }>) 
                 <p> Stratagy plan-4</p>
                 <p> Stratagy plan-5</p>
               </CardText>
-              <Button color="primary" className="text-white">
+              <Button color="primary" onClick={handlePlan1} className="text-white">
                 Choose
               </Button>
             </Card>
@@ -231,7 +248,7 @@ export const ProfileSellerDetail = (props: RouteComponentProps<{ id: string }>) 
                 <p> Stratagy plan-4</p>
                 <p> Stratagy plan-5</p>
               </CardText>
-              <Button color="primary" className="text-white">
+              <Button color="primary" onClick={handlePlan2} className="text-white">
                 Choose
               </Button>
             </Card>
@@ -246,7 +263,7 @@ export const ProfileSellerDetail = (props: RouteComponentProps<{ id: string }>) 
                 <p> Stratagy plan-4</p>
                 <p> Stratagy plan-5</p>
               </CardText>
-              <Button color="primary" className="text-white">
+              <Button color="primary" onClick={handlePlan3} className="text-white">
                 Choose
               </Button>
             </Card>
@@ -261,7 +278,7 @@ export const ProfileSellerDetail = (props: RouteComponentProps<{ id: string }>) 
                 <p> Stratagy plan-4</p>
                 <p> Stratagy plan-5</p>
               </CardText>
-              <Button color="primary" className="text-white">
+              <Button color="primary" onClick={handlePlan4} className="text-white">
                 Choose
               </Button>
             </Card>

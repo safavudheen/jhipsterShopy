@@ -75,6 +75,7 @@ export const ProfileSellerUpdate = (props: RouteComponentProps<{ id: string }>) 
                   validate={{ required: true }}
                 />
               ) : null} */}
+              <h4>Company Details</h4>
               <ValidatedField
                 label={translate('userform.form.name')}
                 id="seller-name"
@@ -107,15 +108,25 @@ export const ProfileSellerUpdate = (props: RouteComponentProps<{ id: string }>) 
                 data-cy="pincode"
                 type="text"
               />
-              <ValidatedField label="Address of The Company" name="address" type="text" />
+              <ValidatedField
+                name="gstNumber"
+                label={translate('userform.form.gstnumber')}
+                placeholder={translate('userform.form.gstnumber')}
+                validate={{
+                  required: { value: false, message: translate('userform.messages.validate.gstnumber.required') },
+                  pattern: {
+                    value: /^[a-zA-Z0-9!$&*+=?^_`{|}~.-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$|^[_.@A-Za-z0-9-]+$/,
+                    message: translate('bankaccount.messages.validate.gstnumber.pattern'),
+                  },
+                  minLength: { value: 1, message: translate('bankaccount.messages.validate.gstnumber.minlength') },
+                  maxLength: { value: 50, message: translate('bankaccount.messages.validate.gstnumber.maxlength') },
+                }}
+              />
+              <ValidatedField label="Local Address of The Company" name="address" type="text" />
               <ValidatedField name="region" placeholder={translate('userform.form.region')} type="text" />
               <ValidatedField name="district" placeholder={translate('userform.form.district')} type="text" />
-              <ValidatedField
-                // label="State"
-                name="state"
-                placeholder={translate('userform.form.state')}
-                type="text"
-              />
+              <ValidatedField name="state" placeholder={translate('userform.form.state')} type="text" />
+              <h4>Bank Account Details</h4>
               <ValidatedField
                 name="accountnumber"
                 label={translate('userform.form.account')}
@@ -130,7 +141,7 @@ export const ProfileSellerUpdate = (props: RouteComponentProps<{ id: string }>) 
               />
               <ValidatedField
                 name="verifyaccountnumber"
-                label={translate('userform.form.confirmaccount')}
+                // label={translate('userform.form.confirmaccount')}
                 placeholder={translate('userform.form.confirmaccount')}
                 type="number"
                 validate={{
@@ -154,12 +165,12 @@ export const ProfileSellerUpdate = (props: RouteComponentProps<{ id: string }>) 
                   maxLength: { value: 50, message: translate('bankaccount.messages.validate.ifsc.maxlength') },
                 }}
               />
-              <ValidatedField
+              {/* <ValidatedField
                 name="pancard"
                 label={translate('userform.form.pancard')}
                 placeholder={translate('userform.form.pancard')}
                 validate={{
-                  required: { value: true, message: translate('userform.messages.validate.pancard.required') },
+                  required: { value: false, message: translate('userform.messages.validate.pancard.required') },
                   pattern: {
                     value: /^[a-zA-Z0-9!$&*+=?^_`{|}~.-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$|^[_.@A-Za-z0-9-]+$/,
                     message: translate('userform.messages.validate.login.pattern'),
@@ -167,21 +178,8 @@ export const ProfileSellerUpdate = (props: RouteComponentProps<{ id: string }>) 
                   minLength: { value: 1, message: translate('userform.messages.validate.pancard.minlength') },
                   maxLength: { value: 50, message: translate('userform.messages.validate.pancard.maxlength') },
                 }}
-              />
-              <ValidatedField
-                name="gstNumber"
-                label={translate('userform.form.gstnumber')}
-                placeholder={translate('userform.form.gstnumber')}
-                validate={{
-                  required: { value: false, message: translate('userform.messages.validate.gstnumber.required') },
-                  pattern: {
-                    value: /^[a-zA-Z0-9!$&*+=?^_`{|}~.-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$|^[_.@A-Za-z0-9-]+$/,
-                    message: translate('bankaccount.messages.validate.gstnumber.pattern'),
-                  },
-                  minLength: { value: 1, message: translate('bankaccount.messages.validate.gstnumber.minlength') },
-                  maxLength: { value: 50, message: translate('bankaccount.messages.validate.gstnumber.maxlength') },
-                }}
-              />
+              /> */}
+              <h4>Personal Details</h4>
               <ValidatedField
                 name="mobile"
                 label={translate('userform.form.mobile')}
@@ -194,6 +192,17 @@ export const ProfileSellerUpdate = (props: RouteComponentProps<{ id: string }>) 
                   },
                   minLength: { value: 1, message: translate('bankaccount.messages.validate.gstnumber.minlength') },
                   maxLength: { value: 15, message: translate('bankaccount.messages.validate.gstnumber.maxlength') },
+                }}
+              />
+              <ValidatedField
+                name="Address"
+                placeholder="Enter Your Address"
+                validate={{
+                  required: { value: false, message: 'address required' },
+                  pattern: {
+                    value: /^[a-zA-Z0-9!$&*+=?^_`{|}~.-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$|^[_.@A-Za-z0-9-]+$/,
+                    message: translate('bankaccount.messages.validate.gstnumber.pattern'),
+                  },
                 }}
               />
               &nbsp;
