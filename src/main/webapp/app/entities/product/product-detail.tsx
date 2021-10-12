@@ -29,7 +29,7 @@ export const ProductDetail = (props: RouteComponentProps<{ id: string }>) => {
               <div className="p-3">
                 <div className="product_details_image">
                   <img
-                    className="product_details_image"
+                    className="w-100 mx-auto"
                     src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZHVjdHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
                     alt=""
                   />
@@ -185,11 +185,6 @@ export const ProductDetail = (props: RouteComponentProps<{ id: string }>) => {
         </Col>
         <Col></Col>
       </Row>
-      <img
-        style={{ height: '7rem', width: '8rem' }}
-        src="https://tpc.googlesyndication.com/simgad/12192253052661786581?sqp=4sqPyQQ7QjkqNxABHQAAtEIgASgBMAk4A0DwkwlYAWBfcAKAAQGIAQGdAQAAgD-oAQGwAYCt4gS4AV_FAS2ynT4&rs=AOga4qkKFpNCpHgiMEIBLQt2tOjfTGzyhg"
-        alt=""
-      />
     </div>
   );
 };

@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import InfiniteScroll from 'react-infinite-scroller';
 import { Progress } from 'reactstrap';
 
-function Dashboard(props: RouteComponentProps<{ url: string }>) {
+export const Dashboard = (props: RouteComponentProps<{ url: string }>) => {
   const { match } = props;
 
   return (
@@ -116,6 +116,6 @@ function Dashboard(props: RouteComponentProps<{ url: string }>) {
       </Row>
     </div>
   );
-}
+};
 
 export default Dashboard;
