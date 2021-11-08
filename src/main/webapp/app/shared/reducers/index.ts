@@ -26,6 +26,7 @@ import service from 'app/entities/service/service.reducer';
 // prettier-ignore
 import userVisit from 'app/entities/user-visit/user-visit.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
+import productSearch from 'app/entities/category-product-search/search-reducer';
 
 const rootReducer = {
   authentication,
@@ -47,6 +48,7 @@ const rootReducer = {
   userVisit,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar,
+  productSearch,
 };
 
 export default rootReducer;
